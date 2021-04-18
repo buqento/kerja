@@ -38,7 +38,6 @@ const FormRegist = () => {
                 })
             })
                 .then(() => {
-                    console.log('saved')
                     setNik("")
                     setNamaLengkap("")
                     setTempatLahir("")
@@ -72,7 +71,7 @@ const FormRegist = () => {
                                 size="lg"
                                 id="nik"
                                 type="text"
-                                placeholder="nik"
+                                placeholder="Nomor Induk Kependudukan"
                                 value={nik}
                                 onChange={(e) => setNik(e.target.value)}
                             />
@@ -86,7 +85,7 @@ const FormRegist = () => {
                                 size="lg"
                                 id="namaLengkap"
                                 type="text"
-                                placeholder="namaLengkap"
+                                placeholder="Nama Lengkap"
                                 value={namaLengkap}
                                 onChange={(e) => setNamaLengkap(e.target.value)}
                             />
@@ -102,7 +101,7 @@ const FormRegist = () => {
                                 size="lg"
                                 id="tempatLahir"
                                 type="text"
-                                placeholder="tempatLahir"
+                                placeholder="Tempat Lahir"
                                 value={tempatLahir}
                                 onChange={(e) => setTempatLahir(e.target.value)}
                             />
@@ -116,7 +115,7 @@ const FormRegist = () => {
                                 size="lg"
                                 id="tanggalLahir"
                                 type="text"
-                                placeholder="tanggalLahir"
+                                placeholder="Tanggal Lahir"
                                 value={tanggalLahir}
                                 onChange={(e) => setTanggalLahir(e.target.value)}
                             />
@@ -180,7 +179,7 @@ const FormRegist = () => {
                                 size="lg"
                                 id="alamat"
                                 type="text"
-                                placeholder="alamat"
+                                placeholder="Alamat"
                                 value={alamat}
                                 onChange={(e) => setAlamat(e.target.value)}
                             />
@@ -196,16 +195,16 @@ const FormRegist = () => {
                                 size="lg"
                                 id="telepon"
                                 type="text"
-                                placeholder="telepon"
+                                placeholder="Telepon"
                                 value={telepon}
                                 onChange={(e) => setTelepon(e.target.value)}
                             />
                         </Form.Group>
                     </Col>
                 </Row>
+                <Button variant="primary" type="submit" className="my-2">Kirim Data</Button>
             </Container>
 
-            <Button variant="primary" type="submit">Kirim Data</Button>
         </Form>
     </div>)
 }
@@ -214,11 +213,13 @@ class Register extends React.Component {
 
     render() {
         return (
-            <Container>
-                <h1>Pendaftaran AK1 (Kartu Kuning)</h1>
-                <FormRegist />
+            <>
+                <Container>
+                    <h1>Pendaftaran AK1 (Kartu Kuning)</h1>
+                    <FormRegist />
+                </Container>
                 <FooterComponent />
-            </Container>
+            </>
         )
     }
 }

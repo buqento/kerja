@@ -3,13 +3,11 @@ import { Jumbotron } from "react-bootstrap"
 
 function JumbotronComponent() {
     return (
-        <div className="mt-10">
-            <Jumbotron>
-                <h1>SIPELITANAKER</h1>
-                <p>Sistem Informasi Pelayanan Elektronik Terpadu Tenaga Kerja</p>
-                <p><Button variant="primary" href="register">Pendaftaran AK1 (Kartu Kuning)</Button></p>
-            </Jumbotron>
-        </div>
+        <Jumbotron className="text-center">
+            <h1>SIPELITANAKER</h1>
+            <p>Sistem Informasi Pelayanan Elektronik Terpadu Tenaga Kerja</p>
+            <p><Button variant="primary" href="register">Pendaftaran AK1 (Kartu Kuning)</Button></p>
+        </Jumbotron>
     )
 }
 
