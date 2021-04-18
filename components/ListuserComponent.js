@@ -33,9 +33,7 @@ class ListuserComponent extends React.Component {
             <thead>
               <tr>
                 <th>#</th>
-                <th>NIK</th>
                 <th>Nama</th>
-                <th>Tempat Lahir</th>
                 <th>#</th>
               </tr>
             </thead>
@@ -58,9 +56,7 @@ class ListuserComponent extends React.Component {
                   .map((user, indexOfKey) =>
                     <tr key={indexOfKey}>
                       <td>{indexOfKey + 1}</td>
-                      <td>{user.nik}</td>
                       <td>{user.namaLengkap}</td>
-                      <td>{user.tempatLahir}</td>
                       <td>{moment(user.createdAt).lang('id').fromNow()}</td>
                     </tr>
                   )
