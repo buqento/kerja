@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap"
 import { Jumbotron } from "react-bootstrap"
 
-function Jtron() {
+function JumbotronComponent() {
     return (
         <div className="mt-10">
             <Jumbotron>
@@ -13,4 +13,4 @@ function Jtron() {
     )
 }
 
-export default Jtron
+export default JumbotronComponent

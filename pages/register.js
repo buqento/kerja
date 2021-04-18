@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { Breadcrumb, Col, Container, Form, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
-import Footer from '../components/Footer';
+import FooterComponent from '../components/FooterComponent';
 
 const FormRegist = () => {
 
@@ -217,7 +217,7 @@ class Register extends React.Component {
             <Container>
                 <h1>Pendaftaran AK1 (Kartu Kuning)</h1>
                 <FormRegist />
-                <Footer />
+                <FooterComponent />
             </Container>
         )
     }

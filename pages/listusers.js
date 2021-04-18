@@ -1,16 +1,16 @@
 import Head from 'next/head'
-import ListUser from '../components/ListUser'
-import Footer from '../components/Footer'
+import FooterComponent from '../components/FooterComponent'
+import ListuserComponent from '../components/ListuserComponent'
 
-function ListUsers({ users }) {
+function ListUsers() {
   return (
     <>
       <Head>
         <title>Daftar Pencari Kerja</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ListUser />
-      <Footer />
+      <ListuserComponent />
+      <FooterComponent />
     </>
   )
 }

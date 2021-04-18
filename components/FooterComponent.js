@@ -1,5 +1,5 @@
 
-function Footer() {
+function FooterComponent() {
     return (
         <div style={{ marginTop:'20px', padding: '20px 0px 20px 0px', backgroundColor:'#666', color:"#fff" }} className="text-center">
             <small>Copyright &copy; 2021</small><br />
@@ -8,4 +8,4 @@ function Footer() {
     )
 }
 
-export default Footer
+export default FooterComponent

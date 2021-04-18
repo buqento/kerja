@@ -1,6 +1,6 @@
 import { Carousel } from 'react-bootstrap'
 
-function Slide() {
+function SlideComponent() {
     return (
         <Carousel>
             <Carousel.Item>
@@ -43,4 +43,4 @@ function Slide() {
     )
 }
 
-export default Slide
+export default SlideComponent

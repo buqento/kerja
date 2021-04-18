@@ -1,6 +1,6 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
 
-function Cards() {
+function CardComponent() {
     return (
         <Container>
             <Row>
@@ -49,4 +49,4 @@ function Cards() {
     )
 }
 
-export default Cards
+export default CardComponent

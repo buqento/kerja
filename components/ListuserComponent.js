@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Table, Button, Breadcrumb } from 'react-bootstrap'
 import moment from 'moment'
 
-class ListUser extends React.Component {
+class ListuserComponent extends React.Component {
 
   constructor(props) {
     super(props)
@@ -82,4 +82,4 @@ export async function getStaticProps() {
   }
 }
 
-export default ListUser
+export default ListuserComponent
