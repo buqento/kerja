@@ -16,6 +16,9 @@ const FormRegist = () => {
     const [agama, setAgama] = useState("")
     const [alamat, setAlamat] = useState("")
     const [telepon, setTelepon] = useState("")
+    const [pendidikanTerakhir, setPendidikanTerakhir] = useState("")
+    const [tahunKelulusan, setTahunKelulusan] = useState("")
+    const [keterampilan, setKeterampilan] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +28,7 @@ const FormRegist = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
+                    createdAt: Date.now(),
                     nik: nik,
                     namaLengkap: namaLengkap,
                     tempatLahir: tempatLahir,
@@ -34,7 +38,9 @@ const FormRegist = () => {
                     agama: agama,
                     alamat: alamat,
                     telepon: telepon,
-                    createdAt: Date.now()
+                    pendidikanTerakhir: pendidikanTerakhir,
+                    tahunKelulusan: tahunKelulusan,
+                    keterampilan: keterampilan
                 })
             })
                 .then(() => {
@@ -55,12 +61,10 @@ const FormRegist = () => {
         }
     }
 
-    return (<div>
-        <Breadcrumb>
-            <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-            <Breadcrumb.Item active>Pendaftaran AK1 (Kartu Kuning)</Breadcrumb.Item>
-        </Breadcrumb>
+    return (<div className="my-4">
         <Form onSubmit={handleSubmit}>
+
+            <h2>Data Pribadi</h2>
             <Container>
                 <Row>
                     <Col lg={6} sm={12}>
@@ -141,7 +145,7 @@ const FormRegist = () => {
                     <Col lg={6} sm={12}>
                         {/* status */}
                         <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Agama</Form.Label>
+                            <Form.Label>Status Pernikahan</Form.Label>
                             <Form.Control
                                 as="select"
                                 size="lg"
@@ -202,7 +206,65 @@ const FormRegist = () => {
                         </Form.Group>
                     </Col>
                 </Row>
-                <Button variant="primary" type="submit" className="my-2">Kirim Data</Button>
+
+                <h2>Pendidikan Formal</h2>
+                <Row>
+                    <Col lg={6} sm={12}>
+                        {/* telepon */}
+                        <Form.Group>
+                            <Form.Label>Pendidikan Terakhir</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={pendidikanTerakhir}
+                                onChange={(e) => setPendidikanTerakhir(e.target.value)}>
+                                <option>SD</option>
+                                <option>SMP</option>
+                                <option>SMA</option>
+                                <option>SMK</option>
+                                <option>D1</option>
+                                <option>D2</option>
+                                <option>D3</option>
+                                <option>S1</option>
+                                <option>S2</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        {/* agama */}
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunKelulusan}
+                                onChange={(e) => setTahunKelulusan(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <h2>Keterampilan</h2>
+                <Row>
+                    <Col lg={6} sm={12}>
+                        {/* telepon */}
+                        <Form.Group>
+                            <Form.Label>Keterampilan/Kursus/Pengalaman Kerja</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="telepon"
+                                type="text"
+                                placeholder="Keterampilan/Kursus/Pengalaman Kerja"
+                                value={keterampilan}
+                                onChange={(e) => setKeterampilan(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Button size="lg" variant="primary" type="submit" className="my-2" block>Kirim Data</Button>
             </Container>
 
         </Form>
@@ -214,8 +276,13 @@ class Register extends React.Component {
     render() {
         return (
             <>
+                <Breadcrumb>
+                    <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                    <Breadcrumb.Item active>Form Pendaftaran AK.1</Breadcrumb.Item>
+                </Breadcrumb>
                 <Container>
-                    <h1>Pendaftaran AK1 (Kartu Kuning)</h1>
+                    <h1 className="mt-4">FORM PENDAFTARAN AK.1</h1>
+                    <p>Formulir AK.1 Online diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
                     <FormRegist />
                 </Container>
                 <FooterComponent />
