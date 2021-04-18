@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Jtron from '../components/Jtron'
-import Cards from '../components/Cards'
 import ListUser from '../components/ListUser'
 import Footer from '../components/Footer'
 
