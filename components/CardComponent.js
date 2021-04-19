@@ -1,43 +1,45 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
+import { FaEdit, FaInfo } from 'react-icons/fa';
+import { ImUserTie, ImNewspaper } from 'react-icons/im';
 
 function CardComponent() {
     return (
-        <Container>
+        <Container className="mt-4">
             <Row>
 
-                <Col lg={4} sm={12} className="mb-3">
+                <Col lg={4} sm={12} className="mb-3 text-center">
                     <Card>
-                        <Card.Img variant="top" src="https://placeimg.com/100/60" />
                         <Card.Body>
-                            <Card.Title>Pendaftaran AK1 (Kartu Kuning)</Card.Title>
+                            <div className="mb-4"><FaEdit size={48} /></div>
+                            <Card.Title>Kartu Pencari Kerja (AK/I)</Card.Title>
                             <Card.Text>
-                                Pendaftaran Pembuatan Kartu AK1 secara Online
+                                Pendaftaran Kartu Pencari Kerja (AK/I) secara On Line. Anda dapat membuat Kartu Pencai Kerja (AK/I) disini.
                             </Card.Text>
-                            <Button variant="primary" href="listusers">Daftar Pencari Kerja</Button>
+                            <Button variant="primary" href="register">Selengkapnya</Button>
                         </Card.Body>
                     </Card>
                 </Col>
 
-                <Col lg={4} sm={12} className="mb-3">
+                <Col lg={4} sm={12} className="mb-3 text-center">
                     <Card>
-                        <Card.Img variant="top" src="https://loremflickr.com/100/60" />
                         <Card.Body>
-                            <Card.Title>Pendaftaran Balai Latihan Kerja</Card.Title>
+                            <div className="mb-4"><ImUserTie size={48} /></div>
+                            <Card.Title>Informasi Lowongan Kerja</Card.Title>
                             <Card.Text>
-                                Pendaftaran Pelatihan Kerja Oleh BLK secara Online
+                                Informasi Lowongan Kerja Resmi oleh Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya.
                             </Card.Text>
                             <Button variant="primary" href="#">Selengkapnya</Button>
                         </Card.Body>
                     </Card>
                 </Col>
 
-                <Col lg={4} sm={12} className="mb-3">
+                <Col lg={4} sm={12} className="mb-3  text-center">
                     <Card>
-                        <Card.Img variant="top" src="https://www.fillmurray.com/100/60" />
                         <Card.Body>
-                            <Card.Title>Lowongan Kerja</Card.Title>
+                            <div className="mb-4"><ImNewspaper size={48} /></div>
+                            <Card.Title>Berita dan Info Terkini</Card.Title>
                             <Card.Text>
-                                Lowongan Kerja Resmi Oleh Dinas Tenaga Kerja Kabupaten Maluku Barat Daya
+                                Berita seputar tenaga kerja di Pemda Kabupaten Maluku Barat Daya, Provinsi dan Pusat dan regulasi terbaru.
                             </Card.Text>
                             <Button variant="primary" href="#">Selengkapnya</Button>
                         </Card.Body>

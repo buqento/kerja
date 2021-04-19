@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { Breadcrumb, Col, Container, Form, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import FooterComponent from '../components/FooterComponent';
+import NavComponent from '../components/NavComponent';
 
 const FormRegist = () => {
 
@@ -53,7 +54,7 @@ const FormRegist = () => {
                     setAgama("")
                     setAlamat("")
                     setTelepon("")
-                    router.push("listusers")
+                    router.push("biodata")
                 })
                 .catch(err => console.log(err))
         } else {
@@ -276,13 +277,14 @@ class Register extends React.Component {
     render() {
         return (
             <>
-                <Breadcrumb>
-                    <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                    <Breadcrumb.Item active>Form Pendaftaran AK.1</Breadcrumb.Item>
-                </Breadcrumb>
+                <NavComponent />
                 <Container>
                     <h1 className="mt-4">FORM PENDAFTARAN AK.1</h1>
                     <p>Formulir AK.1 Online diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
+                    <Breadcrumb>
+                        <Breadcrumb.Item href="/">Beranda</Breadcrumb.Item>
+                        <Breadcrumb.Item active>Form Pendaftaran AK.1</Breadcrumb.Item>
+                    </Breadcrumb>
                     <FormRegist />
                 </Container>
                 <FooterComponent />
