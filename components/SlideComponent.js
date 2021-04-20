@@ -6,7 +6,8 @@ function SlideComponent() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://www.malukubaratdayakab.go.id/asset/foto_iklanatas/ramadhanhijau.jpg"
+                    src="https://dummyimage.com/800x400/000/fff"
+                    // src="https://www.malukubaratdayakab.go.id/asset/foto_iklanatas/ramadhanhijau.jpg"
                     alt="First slide"
                 />
                 {/* <Carousel.Caption>
@@ -17,7 +18,8 @@ function SlideComponent() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://www.malukubaratdayakab.go.id/asset/foto_iklanatas/pkokkok.png"
+                    src="https://dummyimage.com/800x400/000/fff"
+                    // src="https://www.malukubaratdayakab.go.id/asset/foto_iklanatas/pkokkok.png"
                     alt="Second slide"
                 />
 

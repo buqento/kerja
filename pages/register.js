@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Breadcrumb, Col, Container, Form, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
@@ -6,6 +6,15 @@ import FooterComponent from '../components/FooterComponent';
 import NavComponent from '../components/NavComponent';
 
 const FormRegist = () => {
+
+    useEffect(() => {
+        let localUsername = localStorage.getItem('username')
+        if (localUsername !== null) {
+            router.push("register")
+        } else {
+            router.push("login")
+        }
+    })
 
     const router = useRouter()
     const [nik, setNik] = useState("")

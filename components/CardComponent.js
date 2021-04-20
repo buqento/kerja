@@ -1,8 +1,20 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
 import { FaEdit, FaInfo } from 'react-icons/fa';
 import { ImUserTie, ImNewspaper } from 'react-icons/im';
+import { useRouter } from 'next/router'
 
 function CardComponent() {
+    const router = useRouter()
+
+    const handleRegist = () => {
+        let localUsername = localStorage.getItem('username')
+        if (localUsername !== null) {
+            router.push("register")
+        } else {
+            router.push("login")
+        }
+
+    }
     return (
         <Container className="mt-4">
             <Row>
@@ -15,7 +27,7 @@ function CardComponent() {
                             <Card.Text>
                                 Pendaftaran Kartu Pencari Kerja (AK/I) secara On Line. Anda dapat membuat Kartu Pencai Kerja (AK/I) disini.
                             </Card.Text>
-                            <Button variant="primary" href="register">Selengkapnya</Button>
+                            <Button variant="primary" onClick={handleRegist}>Selengkapnya</Button>
                         </Card.Body>
                     </Card>
                 </Col>

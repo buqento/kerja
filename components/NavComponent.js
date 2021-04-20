@@ -9,8 +9,8 @@ function NavComponent() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/">Beranda</Nav.Link>
-                        <Nav.Link href="#link">Informasi</Nav.Link>
-                        <Nav.Link href="#link">Masuk</Nav.Link>
+                        <Nav.Link href="#">Informasi</Nav.Link>
+                        <Nav.Link href="login">Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
