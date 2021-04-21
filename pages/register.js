@@ -35,11 +35,11 @@ const FormRegist = (props) => {
     const [tahunS3PascaS1Akta4D4, setTahunS3PascaS1Akta4D4] = useState("")
     const [tahunDoktor2Akta5, setTahunDoktor2Akta5] = useState("")
     const [keterampilan, setKeterampilan] = useState("")
-
     const allInputs = { imgUrl: '' }
     const [imageAsFile, setImageAsFile] = useState('')
     const [imageAsUrl, setImageAsUrl] = useState(allInputs)
-
+    let tahun = []
+    for (let y = 1990; y < 2022; y++) { tahun.push(y) }
     const handleFireBaseUpload = e => {
         e.preventDefault()
 
@@ -73,36 +73,36 @@ const FormRegist = (props) => {
                             {
                                 sdSederajat: {
                                     nama: sdSederajat,
-                                    tahun: ''
+                                    tahun: tahunSdSederajat
                                 },
 
                                 smtpSederajat: {
                                     nama: smtpSederajat,
-                                    tahun: ''
+                                    tahun: tahunSmtpSederajat
                                 },
                                 smtaD1Akta1: {
                                     nama: smtaD1Akta1,
-                                    tahun: ''
+                                    tahun: tahunSmtaD1Akta1
                                 },
                                 smD2d3: {
                                     nama: smD2d3,
-                                    tahun: ''
+                                    tahun: tahunSmD2d3
                                 },
                                 akta2: {
                                     nama: akta2,
-                                    tahun: ''
+                                    tahun: tahunAkta2
                                 },
                                 akta3: {
                                     nama: akta3,
-                                    tahun: ''
+                                    tahun: tahunAkta3
                                 },
                                 s3PascaS1Akta4D4: {
                                     nama: s3PascaS1Akta4D4,
-                                    tahun: ''
+                                    tahun: tahunS3PascaS1Akta4D4
                                 },
                                 doktor2Akta5: {
                                     nama: doktor2Akta5,
-                                    tahun: ''
+                                    tahun: tahunDoktor2Akta5
                                 }
                             },
                             keterampilan: keterampilan,
@@ -119,7 +119,6 @@ const FormRegist = (props) => {
             })
             .catch(err => console.log(err))
         // end send document
-
 
         // send image
         if (imageAsFile === '') {
@@ -139,12 +138,10 @@ const FormRegist = (props) => {
             })
         // end send image
     }
-
     const handleImageAsFile = (e) => {
         const image = e.target.files[0]
         setImageAsFile(imageFile => (image))
     }
-
     return (<div className="my-4">
         <Form onSubmit={handleFireBaseUpload}>
 
@@ -299,14 +296,10 @@ const FormRegist = (props) => {
                 </Row>
 
                 <h2>Pendidikan Formal</h2>
-
-
-
-
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>smtpSederajat</Form.Label>
+                            <Form.Label>SMTP Sederajat</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="smtpSederajat"
@@ -325,8 +318,7 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunSmtpSederajat}
                                 onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
@@ -334,7 +326,7 @@ const FormRegist = (props) => {
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>sdSederajat</Form.Label>
+                            <Form.Label>SD Sederajat</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="sdSederajat"
@@ -353,8 +345,7 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunSdSederajat}
                                 onChange={(e) => setTahunSdSederajat(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
@@ -362,7 +353,7 @@ const FormRegist = (props) => {
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>smtaD1Akta1</Form.Label>
+                            <Form.Label>SMTA D1 Akta 1</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="smtaD1Akta1"
@@ -381,18 +372,15 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunSmtaD1Akta1}
                                 onChange={(e) => setTahunSmtaD1Akta1(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
-
-
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>smD2d3</Form.Label>
+                            <Form.Label>SM D2 D3</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="smD2d3"
@@ -411,17 +399,15 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunSmD2d3}
                                 onChange={(e) => setTahunSmD2d3(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>akta2</Form.Label>
+                            <Form.Label>Akta 2</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="akta2"
@@ -440,17 +426,15 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunAkta2}
                                 onChange={(e) => setTahunAkta2(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>akta 3</Form.Label>
+                            <Form.Label>Akta 3</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="akta3"
@@ -469,8 +453,7 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunAkta3}
                                 onChange={(e) => setTahunAkta3(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
@@ -478,7 +461,7 @@ const FormRegist = (props) => {
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>akta 3</Form.Label>
+                            <Form.Label>S3 Pasca S1 Akta 4 D4</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="s3PascaS1Akta4D4"
@@ -497,17 +480,15 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunS3PascaS1Akta4D4}
                                 onChange={(e) => setTahunS3PascaS1Akta4D4(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col lg={6} sm={12}>
                         <Form.Group>
-                            <Form.Label>doktor2Akta5</Form.Label>
+                            <Form.Label>Doktor 2 Akta 5</Form.Label>
                             <Form.Control
                                 size="lg"
                                 id="doktor2Akta5"
@@ -526,18 +507,15 @@ const FormRegist = (props) => {
                                 size="lg"
                                 value={tahunDoktor2Akta5}
                                 onChange={(e) => setTahunDoktor2Akta5(e.target.value)}>
-                                <option>2020</option>
-                                <option>2021</option>
+                                {tahun.map(tahun => (<option>{tahun}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
 
-
                 <h2>Keterampilan</h2>
                 <Row>
                     <Col lg={6} sm={12}>
-                        {/* telepon */}
                         <Form.Group>
                             <Form.Label>Keterampilan/Kursus/Pengalaman Kerja</Form.Label>
                             <Form.Control
@@ -551,13 +529,6 @@ const FormRegist = (props) => {
                         </Form.Group>
                     </Col>
                 </Row>
-
-                <Row>
-                    <Col>
-
-                    </Col>
-                </Row>
-
 
                 <Button size="lg" variant="primary" type="submit" className="my-2" block>Kirim Data</Button>
             </Container>
