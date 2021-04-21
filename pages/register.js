@@ -4,20 +4,12 @@ import { Breadcrumb, Col, Container, Form, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import FooterComponent from '../components/FooterComponent';
 import NavComponent from '../components/NavComponent';
+import { storage } from '../config/firebase'
+import fire from '../config/firebase'
 
-const FormRegist = () => {
+const FormRegist = (props) => {
 
-    useEffect(() => {
-        let localUsername = localStorage.getItem('username')
-        if (localUsername !== null) {
-            router.push("register")
-        } else {
-            router.push("login")
-        }
-    })
-
-    const router = useRouter()
-    const [nik, setNik] = useState("")
+    const [nik, setNik] = useState()
     const [namaLengkap, setNamaLengkap] = useState("")
     const [tempatLahir, setTempatLahir] = useState("")
     const [tanggalLahir, setTanggalLahir] = useState("")
@@ -26,56 +18,139 @@ const FormRegist = () => {
     const [agama, setAgama] = useState("")
     const [alamat, setAlamat] = useState("")
     const [telepon, setTelepon] = useState("")
-    const [pendidikanTerakhir, setPendidikanTerakhir] = useState("")
-    const [tahunKelulusan, setTahunKelulusan] = useState("")
+    const [sdSederajat, setSdSederajat] = useState("")
+    const [smtpSederajat, setSmtpSederajat] = useState("")
+    const [smtaD1Akta1, setSmtaD1Akta1] = useState("")
+    const [smD2d3, setSmD2d3] = useState("")
+    const [akta2, setAkta2] = useState("")
+    const [akta3, setAkta3] = useState("")
+    const [s3PascaS1Akta4D4, setS3PascaS1Akta4D4] = useState("")
+    const [doktor2Akta5, setDoktor2Akta5] = useState("")
+    const [tahunSdSederajat, setTahunSdSederajat] = useState("")
+    const [tahunSmtpSederajat, setTahunSmtpSederajat] = useState("")
+    const [tahunSmtaD1Akta1, setTahunSmtaD1Akta1] = useState("")
+    const [tahunSmD2d3, setTahunSmD2d3] = useState("")
+    const [tahunAkta2, setTahunAkta2] = useState("")
+    const [tahunAkta3, setTahunAkta3] = useState("")
+    const [tahunS3PascaS1Akta4D4, setTahunS3PascaS1Akta4D4] = useState("")
+    const [tahunDoktor2Akta5, setTahunDoktor2Akta5] = useState("")
     const [keterampilan, setKeterampilan] = useState("")
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const allInputs = { imgUrl: '' }
+    const [imageAsFile, setImageAsFile] = useState('')
+    const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
-        if (nik !== "" && namaLengkap !== "" && tempatLahir !== "" && tanggalLahir !== "" && alamat !== "" && telepon !== "") {
-            fetch("https://607a5938bd56a60017ba295f.mockapi.io/users", {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    createdAt: Date.now(),
-                    nik: nik,
-                    namaLengkap: namaLengkap,
-                    tempatLahir: tempatLahir,
-                    tanggalLahir: tanggalLahir,
-                    jenisKelamin: jenisKelamin,
-                    status: status,
-                    agama: agama,
-                    alamat: alamat,
-                    telepon: telepon,
-                    pendidikanTerakhir: pendidikanTerakhir,
-                    tahunKelulusan: tahunKelulusan,
-                    keterampilan: keterampilan
-                })
+    const handleFireBaseUpload = e => {
+        e.preventDefault()
+
+        // send document
+        let found = false
+        const docRef = fire
+            .firestore().collection('ak')
+            .where('nik', '==', nik)
+        docRef.onSnapshot(snap => {
+            const data = snap.docs.map(doc => ({
+                id: doc.id, ...doc.data()
+            }))
+            data.length > 0 && (found = true)
+        })
+        docRef.get()
+            .then(() => {
+                if (!found) {
+                    fire.firestore().collection("ak")
+                        .add({
+                            date_modified: Date.now(),
+                            noPendaftaran: '',
+                            nik: nik,
+                            namaLengkap: namaLengkap,
+                            tempatLahir: tempatLahir,
+                            tanggalLahir: tanggalLahir,
+                            jenisKelamin: jenisKelamin,
+                            status: status,
+                            agama: agama,
+                            alamat: alamat,
+                            pendidikanFormal:
+                            {
+                                sdSederajat: {
+                                    nama: sdSederajat,
+                                    tahun: ''
+                                },
+
+                                smtpSederajat: {
+                                    nama: smtpSederajat,
+                                    tahun: ''
+                                },
+                                smtaD1Akta1: {
+                                    nama: smtaD1Akta1,
+                                    tahun: ''
+                                },
+                                smD2d3: {
+                                    nama: smD2d3,
+                                    tahun: ''
+                                },
+                                akta2: {
+                                    nama: akta2,
+                                    tahun: ''
+                                },
+                                akta3: {
+                                    nama: akta3,
+                                    tahun: ''
+                                },
+                                s3PascaS1Akta4D4: {
+                                    nama: s3PascaS1Akta4D4,
+                                    tahun: ''
+                                },
+                                doktor2Akta5: {
+                                    nama: doktor2Akta5,
+                                    tahun: ''
+                                }
+                            },
+                            keterampilan: keterampilan,
+                            foto: imageAsFile.name
+                        })
+                        .then(() => {
+                            // router.push("/")
+                            console.log('file save');
+                        })
+                        .catch((error) => { alert(error.message) })
+                } else {
+                    alert('NIK telah terdaftar!')
+                }
             })
-                .then(() => {
-                    setNik("")
-                    setNamaLengkap("")
-                    setTempatLahir("")
-                    setTanggalLahir("")
-                    setJenisKelamin("")
-                    setStatus("")
-                    setAgama("")
-                    setAlamat("")
-                    setTelepon("")
-                    router.push("biodata")
-                })
-                .catch(err => console.log(err))
-        } else {
-            alert('Inputan data tidak sesuai!')
+            .catch(err => console.log(err))
+        // end send document
+
+
+        // send image
+        if (imageAsFile === '') {
+            console.error(`not an image, the image file is a ${typeof (imageAsFile)}`)
         }
+        const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
+        uploadTask.on('state_changed',
+            (snapShot) => {
+                console.log(snapShot)
+            }, (err) => {
+                console.log(err)
+            }, () => {
+                storage.ref('images').child(imageAsFile.name).getDownloadURL()
+                    .then(fireBaseUrl => {
+                        setImageAsUrl(prevObject => ({ ...prevObject, imgUrl: fireBaseUrl }))
+                    })
+            })
+        // end send image
+    }
+
+    const handleImageAsFile = (e) => {
+        const image = e.target.files[0]
+        setImageAsFile(imageFile => (image))
     }
 
     return (<div className="my-4">
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleFireBaseUpload}>
 
             <h2>Data Pribadi</h2>
             <Container>
+
                 <Row>
                     <Col lg={6} sm={12}>
                         {/* nik */}
@@ -86,6 +161,7 @@ const FormRegist = () => {
                                 id="nik"
                                 type="text"
                                 placeholder="Nomor Induk Kependudukan"
+                                // value={props.nik.replace(/"/g, "")}
                                 value={nik}
                                 onChange={(e) => setNik(e.target.value)}
                             />
@@ -215,46 +291,248 @@ const FormRegist = () => {
                             />
                         </Form.Group>
                     </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.File id="foto" label="Foto" onChange={handleImageAsFile} />
+                        </Form.Group>
+                    </Col>
                 </Row>
 
                 <h2>Pendidikan Formal</h2>
+
+
+
+
                 <Row>
                     <Col lg={6} sm={12}>
-                        {/* telepon */}
                         <Form.Group>
-                            <Form.Label>Pendidikan Terakhir</Form.Label>
+                            <Form.Label>smtpSederajat</Form.Label>
                             <Form.Control
-                                as="select"
                                 size="lg"
-                                value={pendidikanTerakhir}
-                                onChange={(e) => setPendidikanTerakhir(e.target.value)}>
-                                <option>SD</option>
-                                <option>SMP</option>
-                                <option>SMA</option>
-                                <option>SMK</option>
-                                <option>D1</option>
-                                <option>D2</option>
-                                <option>D3</option>
-                                <option>S1</option>
-                                <option>S2</option>
-                            </Form.Control>
+                                id="smtpSederajat"
+                                type="text"
+                                placeholder="smtpSederajat"
+                                value={smtpSederajat}
+                                onChange={(e) => setSmtpSederajat(e.target.value)}
+                            />
                         </Form.Group>
                     </Col>
                     <Col lg={6} sm={12}>
-                        {/* agama */}
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <Form.Control
                                 as="select"
                                 size="lg"
-                                value={tahunKelulusan}
-                                onChange={(e) => setTahunKelulusan(e.target.value)}>
+                                value={tahunSmtpSederajat}
+                                onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
                                 <option>2020</option>
                                 <option>2021</option>
                             </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>sdSederajat</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="sdSederajat"
+                                type="text"
+                                placeholder="sdSederajat"
+                                value={sdSederajat}
+                                onChange={(e) => setSdSederajat(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunSdSederajat}
+                                onChange={(e) => setTahunSdSederajat(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>smtaD1Akta1</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="smtaD1Akta1"
+                                type="text"
+                                placeholder="smtaD1Akta1"
+                                value={smtaD1Akta1}
+                                onChange={(e) => setSmtaD1Akta1(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunSmtaD1Akta1}
+                                onChange={(e) => setTahunSmtaD1Akta1(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>smD2d3</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="smD2d3"
+                                type="text"
+                                placeholder="smD2d3"
+                                value={smD2d3}
+                                onChange={(e) => setSmD2d3(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunSmD2d3}
+                                onChange={(e) => setTahunSmD2d3(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>akta2</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="akta2"
+                                type="text"
+                                placeholder="akta2"
+                                value={akta2}
+                                onChange={(e) => setAkta2(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunAkta2}
+                                onChange={(e) => setTahunAkta2(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>akta 3</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="akta3"
+                                type="text"
+                                placeholder="akta3"
+                                value={akta3}
+                                onChange={(e) => setAkta3(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunAkta3}
+                                onChange={(e) => setTahunAkta3(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>akta 3</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="s3PascaS1Akta4D4"
+                                type="text"
+                                placeholder="s3PascaS1Akta4D4"
+                                value={s3PascaS1Akta4D4}
+                                onChange={(e) => setS3PascaS1Akta4D4(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunS3PascaS1Akta4D4}
+                                onChange={(e) => setTahunS3PascaS1Akta4D4(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>doktor2Akta5</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="doktor2Akta5"
+                                type="text"
+                                placeholder="doktor2Akta5"
+                                value={doktor2Akta5}
+                                onChange={(e) => setDoktor2Akta5(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col lg={6} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <Form.Control
+                                as="select"
+                                size="lg"
+                                value={tahunDoktor2Akta5}
+                                onChange={(e) => setTahunDoktor2Akta5(e.target.value)}>
+                                <option>2020</option>
+                                <option>2021</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
 
                 <h2>Keterampilan</h2>
                 <Row>
@@ -274,6 +552,13 @@ const FormRegist = () => {
                     </Col>
                 </Row>
 
+                <Row>
+                    <Col>
+
+                    </Col>
+                </Row>
+
+
                 <Button size="lg" variant="primary" type="submit" className="my-2" block>Kirim Data</Button>
             </Container>
 
@@ -283,7 +568,26 @@ const FormRegist = () => {
 
 class Register extends React.Component {
 
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            nik: ""
+        }
+    }
+    componentDidMount() {
+
+        const dataNik = localStorage.getItem('nik')
+        this.setState({ nik: dataNik })
+        // if (localUsername !== null) {
+        //     router.push("register")
+        // } else {
+        //     router.push("login")
+        // }
+    }
+
     render() {
+        const { nik } = this.state
         return (
             <>
                 <NavComponent />
@@ -294,7 +598,7 @@ class Register extends React.Component {
                         <Breadcrumb.Item href="/">Beranda</Breadcrumb.Item>
                         <Breadcrumb.Item active>Form Pendaftaran AK.1</Breadcrumb.Item>
                     </Breadcrumb>
-                    <FormRegist />
+                    <FormRegist nik={nik} />
                 </Container>
                 <FooterComponent />
             </>

@@ -6,11 +6,10 @@ import { useRouter } from 'next/router'
 const Addnew = () => {
     const router = useRouter()
     const [nik, setNik] = useState("")
-    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
     const handleSubmit = (e) => {
-        if (nik !== "" && username !== "" && password !== "") {
+        if (nik !== "" && password !== "") {
             e.preventDefault();
             let found = false
             const docRef = fire
@@ -29,13 +28,13 @@ const Addnew = () => {
                             .add({
                                 date_modified: Date.now(),
                                 nik: nik,
-                                username: username,
                                 password: password
                             })
-                            .then(() => { alert('Pendaftaran berhasil') })
+                            .then(() => { 
+                                localStorage.setItem('nik', JSON.stringify(nik))
+                                router.push("/")
+                            })
                             .catch((error) => { alert(error.message) })
-                        setUsername("")
-                        router.push("/")
                     } else {
                         alert('NIK telah terdaftar!')
                     }
@@ -58,17 +57,6 @@ const Addnew = () => {
                         placeholder="Nomor Induk Kependudukan"
                         value={nik}
                         onChange={(e) => setNik(e.target.value)}
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control
-                        size="lg"
-                        id="username"
-                        type="text"
-                        placeholder="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Group>

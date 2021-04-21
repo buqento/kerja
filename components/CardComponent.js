@@ -7,7 +7,7 @@ function CardComponent() {
     const router = useRouter()
 
     const handleRegist = () => {
-        let localUsername = localStorage.getItem('username')
+        let localUsername = localStorage.getItem('nik')
         if (localUsername !== null) {
             router.push("register")
         } else {

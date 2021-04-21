@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 const Login = () => {
     const router = useRouter()
-    const [username, setUsername] = useState("")
+    const [nik, setNik] = useState("")
     const [password, setPassword] = useState("")
 
     const handleSubmit = (e) => {
@@ -14,8 +14,7 @@ const Login = () => {
         let found = false
         const docRef = fire
             .firestore().collection('users')
-            .where('username', '==', username)
-            .where('password', '==', password)
+            .where('nik', '==', nik)
         docRef.onSnapshot(snap => {
             const data = snap.docs.map(doc => ({
                 id: doc.id, ...doc.data()
@@ -26,9 +25,9 @@ const Login = () => {
             .then(() => {
                 if (found) {
                     router.push("/")
-                    localStorage.setItem('username', JSON.stringify(username))
+                    localStorage.setItem('nik', JSON.stringify(nik))
                 } else {
-                    alert('Username atau Password yang dimasukan tidak sesuai!')
+                    alert('NIK atau Password yang dimasukan tidak sesuai!')
                 }
             })
             .catch(err => console.log(err))
@@ -39,14 +38,14 @@ const Login = () => {
             <h1 className="my-4">Login</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>NIK</Form.Label>
                     <Form.Control
                         size="lg"
-                        id="username"
+                        id="nik"
                         type="text"
-                        placeholder="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="nik"
+                        value={nik}
+                        onChange={(e) => setNik(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Group>
