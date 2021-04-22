@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import Generateslug from '../../utils/Generateslug'
 // import { storage } from "./firebase/firebase"
-import { storage } from '../../configurations/firebase'
+import { storage } from '../config/firebase'
 
 const Addimage = () => {
     const allInputs = { imgUrl: '' }
