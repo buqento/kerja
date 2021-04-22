@@ -4,13 +4,16 @@ import Button from 'react-bootstrap/Button';
 import FooterComponent from '../components/FooterComponent';
 import NavComponent from '../components/NavComponent';
 import fire from '../config/firebase'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useRouter } from 'next/router'
 
 const FormRegist = (props) => {
-
+    const router = useRouter()
     const nik = props.nik.replace(/"/g, "")
     const [namaLengkap, setNamaLengkap] = useState("")
     const [tempatLahir, setTempatLahir] = useState("")
-    const [tanggalLahir, setTanggalLahir] = useState("")
+    const [tanggalLahir, setTanggalLahir] = useState(new Date())
     const [jenisKelamin, setJenisKelamin] = useState("Laki-laki")
     const [status, setStatus] = useState("Menikah")
     const [agama, setAgama] = useState("Kristen")
@@ -23,18 +26,25 @@ const FormRegist = (props) => {
     const [akta3, setAkta3] = useState("")
     const [s3PascaS1Akta4D4, setS3PascaS1Akta4D4] = useState("")
     const [doktor2Akta5, setDoktor2Akta5] = useState("")
-    const [tahunSdSederajat, setTahunSdSederajat] = useState("")
-    const [tahunSmtpSederajat, setTahunSmtpSederajat] = useState("")
-    const [tahunSmtaD1Akta1, setTahunSmtaD1Akta1] = useState("")
-    const [tahunSmD2d3, setTahunSmD2d3] = useState("")
-    const [tahunAkta2, setTahunAkta2] = useState("")
-    const [tahunAkta3, setTahunAkta3] = useState("")
-    const [tahunS3PascaS1Akta4D4, setTahunS3PascaS1Akta4D4] = useState("")
-    const [tahunDoktor2Akta5, setTahunDoktor2Akta5] = useState("")
-    const [keterampilan, setKeterampilan] = useState("")
+    const [tahunSdSederajat, setTahunSdSederajat] = useState("1980")
+    const [tahunSmtpSederajat, setTahunSmtpSederajat] = useState("1980")
+    const [tahunSmtaD1Akta1, setTahunSmtaD1Akta1] = useState("1980")
+    const [tahunSmD2d3, setTahunSmD2d3] = useState("1980")
+    const [tahunAkta2, setTahunAkta2] = useState("1980")
+    const [tahunAkta3, setTahunAkta3] = useState("1980")
+    const [tahunS3PascaS1Akta4D4, setTahunS3PascaS1Akta4D4] = useState("1980")
+    const [tahunDoktor2Akta5, setTahunDoktor2Akta5] = useState("1980")
+    const [keterampilan1, setKeterampilan1] = useState("")
+    const [keterampilan2, setKeterampilan2] = useState("")
+    const [keterampilan3, setKeterampilan3] = useState("")
+
+    var todate = tanggalLahir.getDate();
+    var tomonth = tanggalLahir.getMonth() + 1;
+    var toyear = tanggalLahir.getFullYear();
+    var mergeTanggalLahir = todate + '/' + tomonth + '/' + toyear;
 
     let tahun = []
-    for (let y = 1990; y < 2022; y++) { tahun.push(y) }
+    for (let y = 1980; y < 2022; y++) { tahun.push(y) }
     const handleFireBaseUpload = e => {
         e.preventDefault()
         if (namaLengkap !== "") {
@@ -100,11 +110,14 @@ const FormRegist = (props) => {
                                         tahun: tahunDoktor2Akta5
                                     }
                                 },
-                                keterampilan: keterampilan
+                                keterampilan: {
+                                    keterampilan1: keterampilan1,
+                                    keterampilan2: keterampilan2,
+                                    keterampilan3: keterampilan3
+                                }
                             })
                             .then(() => {
-                                // router.push("/")
-                                console.log('file save');
+                                router.push("biodata")
                             })
                             .catch((error) => { alert(error.message) })
                     } else {
@@ -118,6 +131,7 @@ const FormRegist = (props) => {
         }
 
     }
+
 
     return (<div className="my-4">
         <Form onSubmit={handleFireBaseUpload}>
@@ -174,14 +188,14 @@ const FormRegist = (props) => {
                         {/* tanggal lahir */}
                         <Form.Group>
                             <Form.Label>Tanggal Lahir</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="tanggalLahir"
-                                type="text"
-                                placeholder="Tanggal Lahir"
-                                value={tanggalLahir}
-                                onChange={(e) => setTanggalLahir(e.target.value)}
-                            />
+                            <div>
+                                <DatePicker
+                                    id="tanggalLahir"
+                                    className="form-control form-control-lg"
+                                    selected={tanggalLahir}
+                                    dateFormat="dd/MM/yyy"
+                                    onChange={date => setTanggalLahir(date)} />
+                            </div>
                         </Form.Group>
 
                     </Col>
@@ -472,19 +486,48 @@ const FormRegist = (props) => {
                 <Row>
                     <Col lg={12} sm={12}>
                         <Form.Group>
-                            <Form.Label>Keterampilan/Kursus/Pengalaman Kerja</Form.Label>
+                            <Form.Label>Keterampilan 1</Form.Label>
                             <Form.Control
                                 size="lg"
-                                id="telepon"
+                                id="keterampilan1"
                                 type="text"
                                 placeholder=""
-                                value={keterampilan}
-                                onChange={(e) => setKeterampilan(e.target.value)}
+                                value={keterampilan1}
+                                onChange={(e) => setKeterampilan1(e.target.value)}
                             />
                         </Form.Group>
                     </Col>
                 </Row>
-
+                <Row>
+                    <Col lg={12} sm={12}>
+                        <Form.Group>
+                            <Form.Label>Keterampilan 2</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="keterampilan2"
+                                type="text"
+                                placeholder=""
+                                value={keterampilan2}
+                                onChange={(e) => setKeterampilan2(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg={12} sm={12}>
+                        <Form.Group>
+                            <Form.Label>Keterampilan 3</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                id="keterampilan3"
+                                type="text"
+                                placeholder=""
+                                value={keterampilan3}
+                                onChange={(e) => setKeterampilan3(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
                 <Button size="lg" variant="primary" type="submit" className="my-2" block>Kirim Data</Button>
             </Container>
 

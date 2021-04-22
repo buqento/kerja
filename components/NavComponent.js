@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import Router from 'next/router'
 
 class NavComponent extends React.Component {
 
@@ -17,7 +18,7 @@ class NavComponent extends React.Component {
 
     handleLogout() {
         localStorage.removeItem("user");
-        // router.push("/")
+        Router.push("/")
     }
 
     render() {
