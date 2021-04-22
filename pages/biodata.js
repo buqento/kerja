@@ -8,22 +8,26 @@ import NavComponent from '../components/NavComponent';
 
 function Biodata() {
   const componentRef = useRef();
+  let user = {}
+  let nik = ""
+  if (typeof window !== "undefined") {
+    user = JSON.parse(localStorage.getItem('user'))
+    nik = user.nik
+  }
   return (
     <>
       <Head>
         <title>Daftar Pencari Kerja</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <NavComponent />
       <Container className="mt-4">
-        <BioPrint ref={componentRef} />
+        <BioPrint ref={componentRef} nik={nik.replace(/"/g, "")} />
         <ReactToPrint
-          trigger={() => <Button block className="mb-4 lg" size="lg">Cetak Formulir Pendaftaran</Button>}
+          trigger={() => <Button block className="mb-4 lg" size="lg">Cetak Formulir AK.I</Button>}
           content={() => componentRef.current}
         />
       </Container>
-
       <FooterComponent />
     </>
   )

@@ -7,18 +7,17 @@ function CardComponent() {
     const router = useRouter()
 
     const handleRegist = () => {
-        let localUsername = localStorage.getItem('nik')
-        if (localUsername !== null) {
+        let user = JSON.parse(localStorage.getItem('user'))
+        const nik = user && user.nik
+        if (user && nik !== null) {
             router.push("register")
         } else {
             router.push("login")
         }
-
     }
     return (
         <Container className="mt-4">
             <Row>
-
                 <Col lg={4} sm={12} className="mb-3 text-center">
                     <Card>
                         <Card.Body>
@@ -27,11 +26,10 @@ function CardComponent() {
                             <Card.Text>
                                 Pendaftaran Kartu Pencari Kerja (AK/I) secara On Line. Anda dapat membuat Kartu Pencai Kerja (AK/I) disini.
                             </Card.Text>
-                            <Button variant="primary" onClick={handleRegist}>Selengkapnya</Button>
+                            <Button variant="primary" onClick={handleRegist}>Pendaftaran</Button>
                         </Card.Body>
                     </Card>
                 </Col>
-
                 <Col lg={4} sm={12} className="mb-3 text-center">
                     <Card>
                         <Card.Body>
@@ -44,7 +42,6 @@ function CardComponent() {
                         </Card.Body>
                     </Card>
                 </Col>
-
                 <Col lg={4} sm={12} className="mb-3  text-center">
                     <Card>
                         <Card.Body>
@@ -57,7 +54,6 @@ function CardComponent() {
                         </Card.Body>
                     </Card>
                 </Col>
-
             </Row>
         </Container>
     )

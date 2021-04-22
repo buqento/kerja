@@ -15,17 +15,18 @@ const Login = () => {
         const docRef = fire
             .firestore().collection('users')
             .where('nik', '==', nik)
+            .where('password', '==', password)
         docRef.onSnapshot(snap => {
             const data = snap.docs.map(doc => ({
                 id: doc.id, ...doc.data()
             }))
             data.length > 0 && (found = true)
+            localStorage.setItem('user', JSON.stringify({ nik: nik, username: data[0].username }))
         })
         docRef.get()
             .then(() => {
                 if (found) {
-                    router.push("/")
-                    localStorage.setItem('nik', JSON.stringify(nik))
+                    router.push("/")                    
                 } else {
                     alert('NIK atau Password yang dimasukan tidak sesuai!')
                 }

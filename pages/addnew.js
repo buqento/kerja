@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 const Addnew = () => {
     const router = useRouter()
     const [nik, setNik] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
     const handleSubmit = (e) => {
@@ -28,10 +29,11 @@ const Addnew = () => {
                             .add({
                                 date_modified: Date.now(),
                                 nik: nik,
+                                username: username,
                                 password: password
                             })
-                            .then(() => { 
-                                localStorage.setItem('nik', JSON.stringify(nik))
+                            .then(() => {
+                                localStorage.setItem('user', JSON.stringify({ nik: nik, username: username }))
                                 router.push("/")
                             })
                             .catch((error) => { alert(error.message) })
@@ -60,12 +62,23 @@ const Addnew = () => {
                     />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Nama Pengguna</Form.Label>
+                    <Form.Control
+                        size="lg"
+                        id="username"
+                        type="text"
+                        placeholder="Nama pengguna"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Kata Sandi</Form.Label>
                     <Form.Control
                         size="lg"
                         id="password"
                         type="password"
-                        placeholder="password"
+                        placeholder="Kata sandi"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
