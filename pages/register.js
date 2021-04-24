@@ -38,94 +38,126 @@ const FormRegist = (props) => {
     const [keterampilan2, setKeterampilan2] = useState("")
     const [keterampilan3, setKeterampilan3] = useState("")
 
-    var todate = tanggalLahir.getDate();
-    var tomonth = tanggalLahir.getMonth() + 1;
-    var toyear = tanggalLahir.getFullYear();
-    var mergeTanggalLahir = todate + '/' + tomonth + '/' + toyear;
-
     let tahun = []
     for (let y = 1980; y < 2022; y++) { tahun.push(y) }
     const handleFireBaseUpload = e => {
         e.preventDefault()
         if (namaLengkap !== "") {
-            // send document
-            let found = false
-            const docRef = fire
-                .firestore().collection('ak')
-                .where('nik', '==', nik)
-            docRef.onSnapshot(snap => {
-                const data = snap.docs.map(doc => ({
-                    id: doc.id, ...doc.data()
-                }))
-                data.length > 0 && (found = true)
-            })
-            docRef.get()
-                .then(() => {
-                    if (!found) {
-                        fire.firestore().collection("ak")
-                            .add({
-                                date_modified: Date.now(),
-                                noPendaftaran: '',
-                                nik: nik,
-                                namaLengkap: namaLengkap,
-                                tempatLahir: tempatLahir,
-                                tanggalLahir: tanggalLahir,
-                                jenisKelamin: jenisKelamin,
-                                status: status,
-                                agama: agama,
-                                alamat: alamat,
-                                pendidikanFormal:
-                                {
-                                    sdSederajat: {
-                                        nama: sdSederajat,
-                                        tahun: tahunSdSederajat
-                                    },
+            props.user ?
+                fire.firestore().collection("ak")
+                    .doc(props.user && props.user.id)
+                    .update({
+                        date_modified: Date.now(),
+                        noPendaftaran: '',
+                        nik: nik,
+                        namaLengkap: namaLengkap,
+                        tempatLahir: tempatLahir,
+                        tanggalLahir: tanggalLahir,
+                        jenisKelamin: jenisKelamin,
+                        status: status,
+                        agama: agama,
+                        alamat: alamat,
+                        pendidikanFormal:
+                        {
+                            sdSederajat: {
+                                nama: sdSederajat,
+                                tahun: tahunSdSederajat
+                            },
 
-                                    smtpSederajat: {
-                                        nama: smtpSederajat,
-                                        tahun: tahunSmtpSederajat
-                                    },
-                                    smtaD1Akta1: {
-                                        nama: smtaD1Akta1,
-                                        tahun: tahunSmtaD1Akta1
-                                    },
-                                    smD2d3: {
-                                        nama: smD2d3,
-                                        tahun: tahunSmD2d3
-                                    },
-                                    akta2: {
-                                        nama: akta2,
-                                        tahun: tahunAkta2
-                                    },
-                                    akta3: {
-                                        nama: akta3,
-                                        tahun: tahunAkta3
-                                    },
-                                    s3PascaS1Akta4D4: {
-                                        nama: s3PascaS1Akta4D4,
-                                        tahun: tahunS3PascaS1Akta4D4
-                                    },
-                                    doktor2Akta5: {
-                                        nama: doktor2Akta5,
-                                        tahun: tahunDoktor2Akta5
-                                    }
-                                },
-                                keterampilan: {
-                                    keterampilan1: keterampilan1,
-                                    keterampilan2: keterampilan2,
-                                    keterampilan3: keterampilan3
-                                }
-                            })
-                            .then(() => {
-                                router.push("biodata")
-                            })
-                            .catch((error) => { alert(error.message) })
-                    } else {
-                        alert('NIK telah terdaftar!')
-                    }
-                })
-                .catch(err => console.log(err))
-            // end send document
+                            smtpSederajat: {
+                                nama: smtpSederajat,
+                                tahun: tahunSmtpSederajat
+                            },
+                            smtaD1Akta1: {
+                                nama: smtaD1Akta1,
+                                tahun: tahunSmtaD1Akta1
+                            },
+                            smD2d3: {
+                                nama: smD2d3,
+                                tahun: tahunSmD2d3
+                            },
+                            akta2: {
+                                nama: akta2,
+                                tahun: tahunAkta2
+                            },
+                            akta3: {
+                                nama: akta3,
+                                tahun: tahunAkta3
+                            },
+                            s3PascaS1Akta4D4: {
+                                nama: s3PascaS1Akta4D4,
+                                tahun: tahunS3PascaS1Akta4D4
+                            },
+                            doktor2Akta5: {
+                                nama: doktor2Akta5,
+                                tahun: tahunDoktor2Akta5
+                            }
+                        },
+                        keterampilan: {
+                            keterampilan1: keterampilan1,
+                            keterampilan2: keterampilan2,
+                            keterampilan3: keterampilan3
+                        }
+                    })
+                    .then(() => { router.push("biodata") })
+                    .catch(err => { console.log(err) })
+                :
+                fire.firestore().collection("ak")
+                    .add({
+                        date_modified: Date.now(),
+                        noPendaftaran: '',
+                        nik: nik,
+                        namaLengkap: namaLengkap,
+                        tempatLahir: tempatLahir,
+                        tanggalLahir: tanggalLahir,
+                        jenisKelamin: jenisKelamin,
+                        status: status,
+                        agama: agama,
+                        alamat: alamat,
+                        pendidikanFormal:
+                        {
+                            sdSederajat: {
+                                nama: sdSederajat,
+                                tahun: tahunSdSederajat
+                            },
+
+                            smtpSederajat: {
+                                nama: smtpSederajat,
+                                tahun: tahunSmtpSederajat
+                            },
+                            smtaD1Akta1: {
+                                nama: smtaD1Akta1,
+                                tahun: tahunSmtaD1Akta1
+                            },
+                            smD2d3: {
+                                nama: smD2d3,
+                                tahun: tahunSmD2d3
+                            },
+                            akta2: {
+                                nama: akta2,
+                                tahun: tahunAkta2
+                            },
+                            akta3: {
+                                nama: akta3,
+                                tahun: tahunAkta3
+                            },
+                            s3PascaS1Akta4D4: {
+                                nama: s3PascaS1Akta4D4,
+                                tahun: tahunS3PascaS1Akta4D4
+                            },
+                            doktor2Akta5: {
+                                nama: doktor2Akta5,
+                                tahun: tahunDoktor2Akta5
+                            }
+                        },
+                        keterampilan: {
+                            keterampilan1: keterampilan1,
+                            keterampilan2: keterampilan2,
+                            keterampilan3: keterampilan3
+                        }
+                    })
+                    .then(() => { router.push("biodata") })
+                    .catch((error) => { alert(error.message) })
         } else {
             alert('Data tidak sesuai')
         }
@@ -540,17 +572,32 @@ class Register extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            user: null,
             nik: ""
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'))
         this.setState({ nik: user.nik })
+        fire.firestore().collection("ak").where("nik", "==", user.nik)
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const user = {
+                        id: doc.id,
+                        data: doc.data()
+                    }
+                    this.setState({ user: user })
+                });
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            });
     }
 
     render() {
-        const { nik } = this.state
+        const { nik, user } = this.state
         return (
             <>
                 <NavComponent />
@@ -561,7 +608,7 @@ class Register extends React.Component {
                         <Breadcrumb.Item href="/">Beranda</Breadcrumb.Item>
                         <Breadcrumb.Item active>Form Pendaftaran AK.1</Breadcrumb.Item>
                     </Breadcrumb>
-                    <FormRegist nik={nik} />
+                    <FormRegist nik={nik} user={user} />
                 </Container>
                 <FooterComponent />
             </>
