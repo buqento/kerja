@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown, DropdownButton } from 'react-bootstrap'
 import Router from 'next/router'
-import fire from '../config/firebase'
 
 class NavComponent extends React.Component {
 
@@ -32,8 +31,6 @@ class NavComponent extends React.Component {
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Nav className="mr-auto justify-content-end">
-                            <Nav.Link href="/">Beranda</Nav.Link>
-                            <Nav.Link href="#">Informasi</Nav.Link>
                         </Nav>
                         <Navbar.Text>
                             {
