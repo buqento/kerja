@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, DropdownButton } from 'react-bootstrap'
 import Router from 'next/router'
 import fire from '../config/firebase'
 
@@ -26,23 +26,27 @@ class NavComponent extends React.Component {
         const { user } = this.state
         return (
             <>
-                <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="/">SIPELITA MBD</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+
+                <Navbar>
+                    <Navbar.Brand href="/">SiPelita MBD</Navbar.Brand>
+                    <Navbar.Toggle />
+                    <Navbar.Collapse className="justify-content-end">
+                        <Nav className="mr-auto justify-content-end">
                             <Nav.Link href="/">Beranda</Nav.Link>
                             <Nav.Link href="#">Informasi</Nav.Link>
+                        </Nav>
+                        <Navbar.Text>
                             {
-                                user !== null ?
-                                    <NavDropdown title={user.username} id="basic-nav-dropdown">
+                                user ?
+                                    <DropdownButton variant="success" drop="left" title={user.username}>
                                         <NavDropdown.Item href="biodata">Lihat Kartu Pencari Kerja</NavDropdown.Item>
                                         <NavDropdown.Item onClick={this.handleLogout}>Keluar</NavDropdown.Item>
-                                    </NavDropdown>
+                                    </DropdownButton>
                                     :
-                                    <Nav.Link href="login">Login</Nav.Link>
+                                    <Nav.Link href="login" variant="primary">Login</Nav.Link>
                             }
-                        </Nav>
+
+                        </Navbar.Text>
                     </Navbar.Collapse>
                 </Navbar>
             </>

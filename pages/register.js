@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Breadcrumb, Col, Container, Form, Row } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import FooterComponent from '../components/FooterComponent';
 import NavComponent from '../components/NavComponent';
@@ -7,6 +7,8 @@ import fire from '../config/firebase'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRouter } from 'next/router'
+import { FaRegUser, FaRegIdCard, FaRegCalendarAlt, FaBaby, FaPray, FaRegCheckSquare } from 'react-icons/fa';
+import { HiOutlineHome, HiOutlineAcademicCap } from 'react-icons/hi';
 
 const FormRegist = (props) => {
     const router = useRouter()
@@ -173,125 +175,175 @@ const FormRegist = (props) => {
 
                 <Row>
                     <Col lg={6} sm={12}>
-                        {/* nik */}
                         <Form.Group>
                             <Form.Label>NIK</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="nik"
-                                type="text"
-                                placeholder="Nomor Induk Kependudukan"
-                                value={nik}
-                                disabled
-                            />
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegIdCard />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="nik"
+                                    type="text"
+                                    placeholder="Nomor Induk Kependudukan"
+                                    value={nik}
+                                    disabled
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={6} sm={12}>
-                        {/* nama lengkap */}
                         <Form.Group>
                             <Form.Label>Nama Lengkap</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="namaLengkap"
-                                type="text"
-                                placeholder="Nama Lengkap"
-                                value={namaLengkap}
-                                onChange={(e) => setNamaLengkap(e.target.value)}
-                            />
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegUser />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="namaLengkap"
+                                    type="text"
+                                    placeholder="Nama Lengkap"
+                                    value={namaLengkap}
+                                    onChange={(e) => setNamaLengkap(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={6} sm={12}>
-                        {/* tempat lahir */}
                         <Form.Group>
                             <Form.Label>Tempat Lahir</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="tempatLahir"
-                                type="text"
-                                placeholder="Tempat Lahir"
-                                value={tempatLahir}
-                                onChange={(e) => setTempatLahir(e.target.value)}
-                            />
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineHome />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="tempatLahir"
+                                    type="text"
+                                    placeholder="Tempat Lahir"
+                                    value={tempatLahir}
+                                    onChange={(e) => setTempatLahir(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={6} sm={12}>
-                        {/* tanggal lahir */}
+
                         <Form.Group>
                             <Form.Label>Tanggal Lahir</Form.Label>
-                            <div>
-                                <DatePicker
-                                    id="tanggalLahir"
-                                    className="form-control form-control-lg"
-                                    selected={tanggalLahir}
-                                    dateFormat="dd/MM/yyy"
-                                    onChange={date => setTanggalLahir(date)} />
-                            </div>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <div>
+                                    <DatePicker
+                                        id="tanggalLahir"
+                                        className="form-control form-control-lg"
+                                        selected={tanggalLahir}
+                                        dateFormat="dd/MM/yyy"
+                                        onChange={date => setTanggalLahir(date)} />
+                                </div>
+                            </InputGroup>
                         </Form.Group>
 
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={6} sm={12}>
-                        {/* jenis kelamin */}
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Jenis Kelamin</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={jenisKelamin}
-                                onChange={(e) => setJenisKelamin(e.target.value)}>
-                                <option>Laki-laki</option>
-                                <option>Perempuan</option>
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaBaby />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={jenisKelamin}
+                                    onChange={(e) => setJenisKelamin(e.target.value)}>
+                                    <option key="l">Laki-laki</option>
+                                    <option key="p">Perempuan</option>
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={6} sm={12}>
-                        {/* status */}
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Status Pernikahan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={status}
-                                onChange={(e) => setStatus(e.target.value)}>
-                                <option>Menikah</option>
-                                <option>Belum Menikah</option>
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCheckSquare />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={status}
+                                    onChange={(e) => setStatus(e.target.value)}>
+                                    <option key="0">Menikah</option>
+                                    <option key="1">Belum Menikah</option>
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={6} sm={12}>
-                        {/* agama */}
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Agama</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={agama}
-                                onChange={(e) => setAgama(e.target.value)}>
-                                <option>Kristen</option>
-                                <option>Katolik</option>
-                                <option>Islam</option>
-                                <option>Hindu</option>
-                                <option>Budha</option>
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaPray />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={agama}
+                                    onChange={(e) => setAgama(e.target.value)}>
+                                    <option key="1">Kristen</option>
+                                    <option key="2">Katolik</option>
+                                    <option key="3">Islam</option>
+                                    <option key="4">Hindu</option>
+                                    <option key="5">Budha</option>
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={6} sm={12}>
                         {/* alamat */}
                         <Form.Group>
                             <Form.Label>Alamat</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="alamat"
-                                type="text"
-                                placeholder="Alamat"
-                                value={alamat}
-                                onChange={(e) => setAlamat(e.target.value)}
-                            />
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineHome />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="alamat"
+                                    type="text"
+                                    placeholder="Alamat"
+                                    value={alamat}
+                                    onChange={(e) => setAlamat(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
@@ -300,216 +352,328 @@ const FormRegist = (props) => {
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>SMTP Sederajat</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="smtpSederajat"
-                                type="text"
-                                placeholder=""
-                                value={smtpSederajat}
-                                onChange={(e) => setSmtpSederajat(e.target.value)}
-                            />
+                            <Form.Label>Sekolah Dasar</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="smtpSederajat"
+                                    type="text"
+                                    placeholder=""
+                                    value={smtpSederajat}
+                                    onChange={(e) => setSmtpSederajat(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunSmtpSederajat}
-                                onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunSmtpSederajat}
+                                    onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>SD Sederajat</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="sdSederajat"
-                                type="text"
-                                placeholder=""
-                                value={sdSederajat}
-                                onChange={(e) => setSdSederajat(e.target.value)}
-                            />
+                            <Form.Label>Sekolah Menengah Pertama</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="sdSederajat"
+                                    type="text"
+                                    placeholder=""
+                                    value={sdSederajat}
+                                    onChange={(e) => setSdSederajat(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunSdSederajat}
-                                onChange={(e) => setTahunSdSederajat(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunSdSederajat}
+                                    onChange={(e) => setTahunSdSederajat(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>SMTA D1 Akta 1</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="smtaD1Akta1"
-                                type="text"
-                                placeholder=""
-                                value={smtaD1Akta1}
-                                onChange={(e) => setSmtaD1Akta1(e.target.value)}
-                            />
+                            <Form.Label>Sekolah Menengah Atas</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="smtaD1Akta1"
+                                    type="text"
+                                    placeholder=""
+                                    value={smtaD1Akta1}
+                                    onChange={(e) => setSmtaD1Akta1(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunSmtaD1Akta1}
-                                onChange={(e) => setTahunSmtaD1Akta1(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunSmtaD1Akta1}
+                                    onChange={(e) => setTahunSmtaD1Akta1(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>SM D2 D3</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="smD2d3"
-                                type="text"
-                                placeholder=""
-                                value={smD2d3}
-                                onChange={(e) => setSmD2d3(e.target.value)}
-                            />
+                            <Form.Label>Pendidikan Tinggi Diploma</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="smD2d3"
+                                    type="text"
+                                    placeholder=""
+                                    value={smD2d3}
+                                    onChange={(e) => setSmD2d3(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunSmD2d3}
-                                onChange={(e) => setTahunSmD2d3(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunSmD2d3}
+                                    onChange={(e) => setTahunSmD2d3(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>Akta 2</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="akta2"
-                                type="text"
-                                placeholder=""
-                                value={akta2}
-                                onChange={(e) => setAkta2(e.target.value)}
-                            />
+                            <Form.Label>Pendidikan Tinggi Strata 1</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="akta2"
+                                    type="text"
+                                    placeholder=""
+                                    value={akta2}
+                                    onChange={(e) => setAkta2(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunAkta2}
-                                onChange={(e) => setTahunAkta2(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunAkta2}
+                                    onChange={(e) => setTahunAkta2(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>Akta 3</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="akta3"
-                                type="text"
-                                placeholder=""
-                                value={akta3}
-                                onChange={(e) => setAkta3(e.target.value)}
-                            />
+                            <Form.Label>Pendidikan Tinggi Strata 2</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="akta3"
+                                    type="text"
+                                    placeholder=""
+                                    value={akta3}
+                                    onChange={(e) => setAkta3(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunAkta3}
-                                onChange={(e) => setTahunAkta3(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunAkta3}
+                                    onChange={(e) => setTahunAkta3(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>S3 Pasca S1 Akta 4 D4</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="s3PascaS1Akta4D4"
-                                type="text"
-                                placeholder=""
-                                value={s3PascaS1Akta4D4}
-                                onChange={(e) => setS3PascaS1Akta4D4(e.target.value)}
-                            />
+                            <Form.Label>Pendidikan Tinggi Strata 3</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="s3PascaS1Akta4D4"
+                                    type="text"
+                                    placeholder=""
+                                    value={s3PascaS1Akta4D4}
+                                    onChange={(e) => setS3PascaS1Akta4D4(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunS3PascaS1Akta4D4}
-                                onChange={(e) => setTahunS3PascaS1Akta4D4(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunS3PascaS1Akta4D4}
+                                    onChange={(e) => setTahunS3PascaS1Akta4D4(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
-                            <Form.Label>Doktor 2 Akta 5</Form.Label>
-                            <Form.Control
-                                size="lg"
-                                id="doktor2Akta5"
-                                type="text"
-                                placeholder=""
-                                value={doktor2Akta5}
-                                onChange={(e) => setDoktor2Akta5(e.target.value)}
-                            />
+                            <Form.Label>Pendidikan Tinggi Doktor</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="doktor2Akta5"
+                                    type="text"
+                                    placeholder=""
+                                    value={doktor2Akta5}
+                                    onChange={(e) => setDoktor2Akta5(e.target.value)}
+                                />
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                     <Col lg={2} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
-                            <Form.Control
-                                as="select"
-                                size="lg"
-                                value={tahunDoktor2Akta5}
-                                onChange={(e) => setTahunDoktor2Akta5(e.target.value)}>
-                                {tahun.map(tahun => (<option>{tahun}</option>))}
-                            </Form.Control>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunDoktor2Akta5}
+                                    onChange={(e) => setTahunDoktor2Akta5(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
                         </Form.Group>
                     </Col>
                 </Row>
@@ -602,12 +766,8 @@ class Register extends React.Component {
             <>
                 <NavComponent />
                 <Container>
-                    <h1 className="mt-4">FORM PENDAFTARAN AK.1</h1>
+                    <h1 className="mt-4">PENDAFTARAN AK.1</h1>
                     <p>Formulir AK.1 Online diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
-                    <Breadcrumb>
-                        <Breadcrumb.Item href="/">Beranda</Breadcrumb.Item>
-                        <Breadcrumb.Item active>Form Pendaftaran AK.1</Breadcrumb.Item>
-                    </Breadcrumb>
                     <FormRegist nik={nik} user={user} />
                 </Container>
                 <FooterComponent />

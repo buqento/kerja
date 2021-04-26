@@ -6,27 +6,22 @@ function SlideComponent() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://dummyimage.com/800x400/000/fff"
-                    // src="https://www.malukubaratdayakab.go.id/asset/foto_iklanatas/ramadhanhijau.jpg"
+                    // src="https://dummyimage.com/800x400/000/fff"
+                    src="../images/pelantikan.jpg"
                     alt="First slide"
                 />
-                {/* <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption> */}
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://dummyimage.com/800x400/000/fff"
+                    src="../images/gunung_kerbau.jpg"
                     // src="https://www.malukubaratdayakab.go.id/asset/foto_iklanatas/pkokkok.png"
                     alt="Second slide"
                 />
-
-                {/* <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption> */}
+                <Carousel.Caption>
+                    <h3>Gunung Kerbau</h3>
+                    <p>Menikmati Safari Kala Senja</p>
+                </Carousel.Caption>
             </Carousel.Item>
 
         </Carousel>

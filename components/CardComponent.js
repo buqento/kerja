@@ -17,40 +17,29 @@ function CardComponent() {
     }
     return (
         <Container className="mt-4">
+            <h1 className="text-center my-5">Layanan</h1>
             <Row>
-                <Col lg={4} sm={12} className="mb-3 text-center">
+                <Col lg={6} sm={12} className="mb-3 text-center">
                     <Card>
                         <Card.Body>
                             <div className="mb-4"><FaEdit size={48} /></div>
-                            <Card.Title>Kartu Pencari Kerja (AK/I)</Card.Title>
+                            <Card.Title>KARTU PENCARI KERJA (AK/I)</Card.Title>
                             <Card.Text>
-                                Pendaftaran Kartu Pencari Kerja (AK/I) secara On Line. Anda dapat membuat Kartu Pencai Kerja (AK/I) disini.
+                                Pendaftaran Kartu Pencari Kerja (AK/I). Anda dapat membuat Kartu Pencai Kerja (AK/I) disini.
                             </Card.Text>
-                            <Button variant="primary" onClick={handleRegist}>Pendaftaran</Button>
+                            <Button variant="primary" onClick={handleRegist}>Mulai Pendaftaran</Button>
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col lg={4} sm={12} className="mb-3 text-center">
+                <Col lg={6} sm={12} className="mb-3 text-center">
                     <Card>
                         <Card.Body>
                             <div className="mb-4"><ImUserTie size={48} /></div>
-                            <Card.Title>Informasi Lowongan Kerja</Card.Title>
+                            <Card.Title>LOWONGAN KERJA</Card.Title>
                             <Card.Text>
                                 Informasi Lowongan Kerja Resmi oleh Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya.
                             </Card.Text>
-                            <Button variant="primary" href="#">Selengkapnya</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col lg={4} sm={12} className="mb-3  text-center">
-                    <Card>
-                        <Card.Body>
-                            <div className="mb-4"><ImNewspaper size={48} /></div>
-                            <Card.Title>Berita dan Info Terkini</Card.Title>
-                            <Card.Text>
-                                Berita seputar tenaga kerja di Pemda Kabupaten Maluku Barat Daya, Provinsi dan Pusat dan regulasi terbaru.
-                            </Card.Text>
-                            <Button variant="primary" href="#">Selengkapnya</Button>
+                            <Button variant="primary" href="#">Lihat Lowongan Kerja</Button>
                         </Card.Body>
                     </Card>
                 </Col>
