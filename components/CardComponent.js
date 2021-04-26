@@ -17,7 +17,7 @@ function CardComponent() {
     }
     return (
         <Container className="mt-4">
-            <h1 className="text-center my-5">Layanan</h1>
+            <h1 className="text-center my-5">Layanan Publik</h1>
             <Row>
                 <Col lg={6} sm={12} className="mb-3 text-center">
                     <Card>

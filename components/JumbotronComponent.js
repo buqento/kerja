@@ -4,9 +4,8 @@ import { Jumbotron } from "react-bootstrap"
 function JumbotronComponent() {
     return (
         <Jumbotron className="text-center">
-            <h1>SIPELITANAKER</h1>
-            <p>Sistem Informasi Pelayanan Elektronik Terpadu Tenaga Kerja</p>
-            <p><Button variant="primary" href="register">Pendaftaran AK1 (Kartu Kuning)</Button></p>
+            <h1>SiPelita MBD</h1>
+            <h3>Sistem Pelayanan Informasi Tenaga Kerja<br />Maluku Barat Daya</h3>
         </Jumbotron>
     )
 }

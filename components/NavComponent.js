@@ -27,7 +27,7 @@ class NavComponent extends React.Component {
         return (
             <>
 
-                <Navbar>
+                <Navbar sticky="top" bg="light">
                     <Navbar.Brand href="/">SiPelita MBD</Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
