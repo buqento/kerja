@@ -7,41 +7,57 @@ function GraphComponent() {
 
     const [num, setNum] = useState(null)
     const [numUser, setNumUser] = useState(null)
-    const [numFilter, setNumFilter] = useState(null)
+    const [sd, setNumSd] = useState(null)
+    const [smp, setNumSmp] = useState(null)
+    const [sma, setNumSma] = useState(null)
+    const [diploma, setNumDiploma] = useState(null)
+    const [s1, setNumS1] = useState(null)
+    const [s2, setNumS2] = useState(null)
+    const [s3, setNumS3] = useState(null)
+    const [doktor, setNumDoktor] = useState(null)
+
+    const refAcademy = fire.firestore().collection('ak')
 
     fire.firestore().collection('users').get().then(snap => {
         setNumUser(snap.size)
     });
-    fire.firestore().collection('ak').get().then(snap => {
-        setNum(snap.size)
-    });
-    fire.firestore().collection('ak')
-        .where("agama", "==", "Kristen")
-        .get().then(snap => {
-            setNumFilter(snap.size)
-        });
+    refAcademy.get().then(snap => { setNum(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.sdSederajat.nama", "!=", "")
+        .get().then(snap => { setNumSd(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.smtpSederajat.nama", "!=", "")
+        .get().then(snap => { setNumSmp(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.smtaD1Akta1.nama", "!=", "")
+        .get().then(snap => { setNumSma(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.smD2d3.nama", "!=", "")
+        .get().then(snap => { setNumDiploma(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.akta2.nama", "!=", "")
+        .get().then(snap => { setNumS1(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.akta3.nama", "!=", "")
+        .get().then(snap => { setNumS2(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.s3PascaS1Akta4D4.nama", "!=", "")
+        .get().then(snap => { setNumS3(snap.size) });
+    refAcademy
+        .where("pendidikanFormal.doktor2Akta5.nama", "!=", "")
+        .get().then(snap => { setNumDoktor(snap.size) });
     const data = {
-        labels: ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3', 'Doktor'],
+        labels: ['SD', 'SMP', 'SMA', 'Diploma', 'S1', 'S2', 'S3', 'Doktor'],
         title: {
             text: "Date Time Formatting"
         },
         datasets: [
             {
-                label: 'Laki-laki',
-                data: [100, 50, 45, 99, 32, 55, 90],
+                label: 'Jenjang Pendidikan',
+                data: [sd, smp, sma, diploma, s1, s2, s3, doktor],
                 // tension: 0,
                 // borderColor: "rgb(248,169,113)",
                 backgroundColor: "blue",
-                radius: 0,
-                borderWidth: 1,
-                pointHitRadius: 5
-            },
-            {
-                label: 'Perempuan',
-                data: [56, 70, 40, 155, 78, 12, 56],
-                // tension: 0,
-                // borderColor: "rgb(248,169,113)",
-                backgroundColor: "pink",
                 radius: 0,
                 borderWidth: 1,
                 pointHitRadius: 5

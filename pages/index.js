@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Kerja</title>
+        <title>Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavComponent />

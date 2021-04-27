@@ -8,9 +8,6 @@ import NavComponent from '../components/NavComponent';
 import fire from '../config/firebase'
 import { useRouter } from 'next/router'
 
-// layanan pengaduan
-// gambar lihat yg terbaru
-
 function Biodata() {
   const router = useRouter()
   const componentRef = useRef();
