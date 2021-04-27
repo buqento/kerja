@@ -1,11 +1,14 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
-import { FaEdit, FaInfo } from 'react-icons/fa';
-import { ImUserTie, ImNewspaper } from 'react-icons/im';
+import { FaEdit } from 'react-icons/fa';
+import { ImUserTie } from 'react-icons/im';
 import { useRouter } from 'next/router'
 
 function CardComponent() {
     const router = useRouter()
-
+    let userdata = null
+    if (typeof window !== "undefined") {
+        userdata = JSON.parse(localStorage.getItem('userdata'))
+    }
     const handleRegist = () => {
         let user = JSON.parse(localStorage.getItem('user'))
         const nik = user && user.nik
@@ -25,9 +28,9 @@ function CardComponent() {
                             <div className="mb-4"><FaEdit size={48} /></div>
                             <Card.Title>KARTU PENCARI KERJA (AK/I)</Card.Title>
                             <Card.Text>
-                                Pendaftaran Kartu Pencari Kerja (AK/I). Anda dapat membuat Kartu Pencai Kerja (AK/I) disini.
+                                Pendaftaran Kartu Pencari Kerja (AK/I). Anda dapat membuat Kartu Pencari Kerja (AK/I) disini.
                             </Card.Text>
-                            <Button variant="primary" onClick={handleRegist}>Mulai Pendaftaran</Button>
+                            <Button variant="primary" onClick={handleRegist}>{userdata ? 'Ubah Data Pencari Kerja' : 'Pendaftaran Pencari Kerja'}</Button>
                         </Card.Body>
                     </Card>
                 </Col>

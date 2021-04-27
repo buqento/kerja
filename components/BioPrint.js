@@ -16,7 +16,7 @@ export class BioPrint extends React.PureComponent {
                         <Table borderless size="sm">
                             <tbody>
                                 <tr>
-                                    <td rowSpan={7}>
+                                    <td rowSpan={8}>
                                         <img src="https://via.placeholder.com/250x300.png?text=Foto 3x4" />
                                     </td>
                                     <td>NIK</td>
@@ -27,8 +27,8 @@ export class BioPrint extends React.PureComponent {
                                     <td className="font-weight-bold">: {user.namaLengkap}</td>
                                 </tr>
                                 <tr>
-                                    <td>Tempat / Tanggal Lahir</td>
-                                    <td className="font-weight-bold">: {user.tempatLahir} / {user.tanggalLahir}</td>
+                                    <td>Tempat Tanggal Lahir</td>
+                                    <td className="font-weight-bold">: {user.tempatLahir}, {user.tanggalLahir}</td>
                                 </tr>
                                 <tr>
                                     <td>Jenis Kelamin</td>
@@ -45,6 +45,10 @@ export class BioPrint extends React.PureComponent {
                                 <tr>
                                     <td>Alamat</td>
                                     <td className="font-weight-bold">: {user.alamat}</td>
+                                </tr>
+                                <tr>
+                                    <td>Telepon</td>
+                                    <td className="font-weight-bold">: {user.telepon}</td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -63,54 +67,78 @@ export class BioPrint extends React.PureComponent {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td className="text-center">1</td>
-                                            <td>Sekolah Dasar</td>
-                                            <td>{user.pendidikanFormal.sdSederajat.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.sdSederajat.tahun}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">2</td>
-                                            <td>Sekolah Menengah Pertama</td>
-                                            <td>{user.pendidikanFormal.smtpSederajat.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.smtpSederajat.tahun}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">3</td>
-                                            <td>Sekolah Menengah Atas</td>
-                                            <td>{user.pendidikanFormal.smtaD1Akta1.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.smtaD1Akta1.tahun}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">5</td>
-                                            <td>Pendidikan Tinggi Diploma</td>
-                                            <td>{user.pendidikanFormal.smD2d3.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.smD2d3.tahun}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">6</td>
-                                            <td>Pendidikan Tinggi Strata 1</td>
-                                            <td>{user.pendidikanFormal.akta2.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.akta2.tahun}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">7</td>
-                                            <td>Pendidikan Tinggi Strata 2</td>
-                                            <td>{user.pendidikanFormal.akta3.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.akta3.tahun}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">8</td>
-                                            <td>Pendidikan Tinggi Strata 3</td>
-                                            <td>{user.pendidikanFormal.s3PascaS1Akta4D4.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.s3PascaS1Akta4D4.tahun}</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-center">9</td>
-                                            <td>Pendidikan Tinggi Doktor</td>
-                                            <td>{user.pendidikanFormal.doktor2Akta5.nama}</td>
-                                            <td className="text-center">{user.pendidikanFormal.doktor2Akta5.tahun}</td>
-                                        </tr>
+                                        {
+                                            user.pendidikanFormal.sdSederajat &&
+                                            <tr>
+                                                <td className="text-center">1</td>
+                                                <td>Sekolah Dasar</td>
+                                                <td>{user.pendidikanFormal.sdSederajat.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.sdSederajat.tahun}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            user.pendidikanFormal.smtpSederajat &&
+                                            <tr>
+                                                <td className="text-center">2</td>
+                                                <td>Sekolah Menengah Pertama</td>
+                                                <td>{user.pendidikanFormal.smtpSederajat.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.smtpSederajat.tahun}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            user.pendidikanFormal.smtaD1Akta1 &&
+                                            <tr>
+                                                <td className="text-center">3</td>
+                                                <td>Sekolah Menengah Atas</td>
+                                                <td>{user.pendidikanFormal.smtaD1Akta1.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.smtaD1Akta1.tahun}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            user.pendidikanFormal.smD2d3 &&
+                                            <tr>
+                                                <td className="text-center">5</td>
+                                                <td>Pendidikan Tinggi Diploma</td>
+                                                <td>{user.pendidikanFormal.smD2d3.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.smD2d3.tahun}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            user.pendidikanFormal.akta2 &&
+                                            <tr>
+                                                <td className="text-center">6</td>
+                                                <td>Pendidikan Tinggi Strata 1</td>
+                                                <td>{user.pendidikanFormal.akta2.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.akta2.tahun}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            user.pendidikanFormal.akta3 &&
+                                            <tr>
+                                                <td className="text-center">7</td>
+                                                <td>Pendidikan Tinggi Strata 2</td>
+                                                <td>{user.pendidikanFormal.akta3.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.akta3.tahun}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            user.pendidikanFormal.s3PascaS1Akta4D4 &&
+                                            <tr>
+                                                <td className="text-center">8</td>
+                                                <td>Pendidikan Tinggi Strata 3</td>
+                                                <td>{user.pendidikanFormal.s3PascaS1Akta4D4.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.s3PascaS1Akta4D4.tahun}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            user.pendidikanFormal.doktor2Akta5 &&
+                                            <tr>
+                                                <td className="text-center">9</td>
+                                                <td>Pendidikan Tinggi Doktor</td>
+                                                <td>{user.pendidikanFormal.doktor2Akta5.nama}</td>
+                                                <td className="text-center">{user.pendidikanFormal.doktor2Akta5.tahun}</td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </Table>
                             </div>

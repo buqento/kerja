@@ -7,7 +7,7 @@ import fire from '../config/firebase'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRouter } from 'next/router'
-import { FaRegUser, FaRegIdCard, FaRegCalendarAlt, FaBaby, FaPray, FaRegCheckSquare } from 'react-icons/fa';
+import { FaRegUser, FaRegIdCard, FaRegCalendarAlt, FaBaby, FaPray, FaRegCheckSquare, FaPhone } from 'react-icons/fa';
 import { HiOutlineHome, HiOutlineAcademicCap } from 'react-icons/hi';
 
 const FormRegist = (props) => {
@@ -20,6 +20,7 @@ const FormRegist = (props) => {
     const [status, setStatus] = useState("Menikah")
     const [agama, setAgama] = useState("Kristen")
     const [alamat, setAlamat] = useState("")
+    const [telepon, setTelepon] = useState("")
     const [sdSederajat, setSdSederajat] = useState("")
     const [smtpSederajat, setSmtpSederajat] = useState("")
     const [smtaD1Akta1, setSmtaD1Akta1] = useState("")
@@ -41,131 +42,85 @@ const FormRegist = (props) => {
     const [keterampilan3, setKeterampilan3] = useState("")
 
     let tahun = []
-    for (let y = 1980; y < 2022; y++) { tahun.push(y) }
+    let pendidikanFormal = {}
+    if (sdSederajat !== "") pendidikanFormal.sdSederajat = {
+        nama: sdSederajat,
+        tahun: tahunSdSederajat
+    }
+    if (smtpSederajat !== "") pendidikanFormal.smtpSederajat = {
+        nama: smtpSederajat,
+        tahun: tahunSmtpSederajat
+    }
+    if (smtaD1Akta1 !== "") pendidikanFormal.smtaD1Akta1 = {
+        nama: smtaD1Akta1,
+        tahun: tahunSmtaD1Akta1
+    }
+
+    if (smD2d3 !== "") pendidikanFormal.smD2d3 = {
+        nama: smD2d3,
+        tahun: tahunSmD2d3
+    }
+
+    if (akta2 !== "") pendidikanFormal.akta2 = {
+        nama: akta2,
+        tahun: tahunAkta2
+    }
+
+    if (akta3 !== "") pendidikanFormal.akta3 = {
+        nama: akta3,
+        tahun: tahunAkta3
+    }
+
+    if (s3PascaS1Akta4D4 !== "") pendidikanFormal.s3PascaS1Akta4D4 = {
+        nama: s3PascaS1Akta4D4,
+        tahun: tahunS3PascaS1Akta4D4
+    }
+
+    if (doktor2Akta5 !== "") pendidikanFormal.doktor2Akta5 = {
+        nama: doktor2Akta5,
+        tahun: tahunDoktor2Akta5
+    }
+
+    let userData = {
+        date_modified: Date.now(),
+        noPendaftaran: '',
+        nik: nik,
+        namaLengkap: namaLengkap,
+        tempatLahir: tempatLahir,
+        tanggalLahir: tanggalLahir,
+        jenisKelamin: jenisKelamin,
+        status: status,
+        agama: agama,
+        alamat: alamat,
+        telepon: telepon,
+        pendidikanFormal: pendidikanFormal,
+        keterampilan: {
+            keterampilan1: keterampilan1,
+            keterampilan2: keterampilan2,
+            keterampilan3: keterampilan3
+        }
+    }
+
+    for (let y = 1980; y < 2021; y++) { tahun.push(y) }
     const handleFireBaseUpload = e => {
         e.preventDefault()
         if (namaLengkap !== "") {
             props.user ?
                 fire.firestore().collection("ak")
                     .doc(props.user && props.user.id)
-                    .update({
-                        date_modified: Date.now(),
-                        noPendaftaran: '',
-                        nik: nik,
-                        namaLengkap: namaLengkap,
-                        tempatLahir: tempatLahir,
-                        tanggalLahir: tanggalLahir,
-                        jenisKelamin: jenisKelamin,
-                        status: status,
-                        agama: agama,
-                        alamat: alamat,
-                        pendidikanFormal:
-                        {
-                            sdSederajat: {
-                                nama: sdSederajat,
-                                tahun: tahunSdSederajat
-                            },
-
-                            smtpSederajat: {
-                                nama: smtpSederajat,
-                                tahun: tahunSmtpSederajat
-                            },
-                            smtaD1Akta1: {
-                                nama: smtaD1Akta1,
-                                tahun: tahunSmtaD1Akta1
-                            },
-                            smD2d3: {
-                                nama: smD2d3,
-                                tahun: tahunSmD2d3
-                            },
-                            akta2: {
-                                nama: akta2,
-                                tahun: tahunAkta2
-                            },
-                            akta3: {
-                                nama: akta3,
-                                tahun: tahunAkta3
-                            },
-                            s3PascaS1Akta4D4: {
-                                nama: s3PascaS1Akta4D4,
-                                tahun: tahunS3PascaS1Akta4D4
-                            },
-                            doktor2Akta5: {
-                                nama: doktor2Akta5,
-                                tahun: tahunDoktor2Akta5
-                            }
-                        },
-                        keterampilan: {
-                            keterampilan1: keterampilan1,
-                            keterampilan2: keterampilan2,
-                            keterampilan3: keterampilan3
-                        }
-                    })
+                    .update(userData)
                     .then(() => { router.push("biodata") })
                     .catch(err => { console.log(err) })
                 :
                 fire.firestore().collection("ak")
-                    .add({
-                        date_modified: Date.now(),
-                        noPendaftaran: '',
-                        nik: nik,
-                        namaLengkap: namaLengkap,
-                        tempatLahir: tempatLahir,
-                        tanggalLahir: tanggalLahir,
-                        jenisKelamin: jenisKelamin,
-                        status: status,
-                        agama: agama,
-                        alamat: alamat,
-                        pendidikanFormal:
-                        {
-                            sdSederajat: {
-                                nama: sdSederajat,
-                                tahun: tahunSdSederajat
-                            },
-
-                            smtpSederajat: {
-                                nama: smtpSederajat,
-                                tahun: tahunSmtpSederajat
-                            },
-                            smtaD1Akta1: {
-                                nama: smtaD1Akta1,
-                                tahun: tahunSmtaD1Akta1
-                            },
-                            smD2d3: {
-                                nama: smD2d3,
-                                tahun: tahunSmD2d3
-                            },
-                            akta2: {
-                                nama: akta2,
-                                tahun: tahunAkta2
-                            },
-                            akta3: {
-                                nama: akta3,
-                                tahun: tahunAkta3
-                            },
-                            s3PascaS1Akta4D4: {
-                                nama: s3PascaS1Akta4D4,
-                                tahun: tahunS3PascaS1Akta4D4
-                            },
-                            doktor2Akta5: {
-                                nama: doktor2Akta5,
-                                tahun: tahunDoktor2Akta5
-                            }
-                        },
-                        keterampilan: {
-                            keterampilan1: keterampilan1,
-                            keterampilan2: keterampilan2,
-                            keterampilan3: keterampilan3
-                        }
-                    })
+                    .add(userData)
                     .then(() => { router.push("biodata") })
                     .catch((error) => { alert(error.message) })
+            localStorage.setItem('userdata', JSON.stringify(userData))
         } else {
             alert('Data tidak sesuai')
         }
-
     }
-
 
     return (<div className="my-4">
         <Form onSubmit={handleFireBaseUpload}>
@@ -326,7 +281,6 @@ const FormRegist = (props) => {
                         </Form.Group>
                     </Col>
                     <Col lg={6} sm={12}>
-                        {/* alamat */}
                         <Form.Group>
                             <Form.Label>Alamat</Form.Label>
                             <InputGroup>
@@ -347,53 +301,33 @@ const FormRegist = (props) => {
                         </Form.Group>
                     </Col>
                 </Row>
-
+                <Row>
+                    <Col lg={6} sm={12}>
+                        <Form.Group>
+                            <Form.Label>Telepon</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaPhone />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="telepon"
+                                    type="text"
+                                    placeholder="Telepon"
+                                    value={telepon}
+                                    onChange={(e) => setTelepon(e.target.value)}
+                                />
+                            </InputGroup>
+                        </Form.Group>
+                    </Col>
+                </Row>
                 <h2>Pendidikan Formal</h2>
                 <Row>
                     <Col lg={10} sm={12}>
                         <Form.Group>
                             <Form.Label>Sekolah Dasar</Form.Label>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text>
-                                        <HiOutlineAcademicCap />
-                                    </InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control
-                                    size="lg"
-                                    id="smtpSederajat"
-                                    type="text"
-                                    placeholder=""
-                                    value={smtpSederajat}
-                                    onChange={(e) => setSmtpSederajat(e.target.value)}
-                                />
-                            </InputGroup>
-                        </Form.Group>
-                    </Col>
-                    <Col lg={2} sm={12}>
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Tahun Kelulusan</Form.Label>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text>
-                                        <FaRegCalendarAlt />
-                                    </InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control
-                                    as="select"
-                                    size="lg"
-                                    value={tahunSmtpSederajat}
-                                    onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
-                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
-                                </Form.Control>
-                            </InputGroup>
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col lg={10} sm={12}>
-                        <Form.Group>
-                            <Form.Label>Sekolah Menengah Pertama</Form.Label>
                             <InputGroup>
                                 <InputGroup.Prepend>
                                     <InputGroup.Text>
@@ -423,8 +357,49 @@ const FormRegist = (props) => {
                                 <Form.Control
                                     as="select"
                                     size="lg"
-                                    value={tahunSdSederajat}
+                                    value={tahunSmtpSederajat}
                                     onChange={(e) => setTahunSdSederajat(e.target.value)}>
+                                    {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
+                                </Form.Control>
+                            </InputGroup>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg={10} sm={12}>
+                        <Form.Group>
+                            <Form.Label>Sekolah Menengah Pertama</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <HiOutlineAcademicCap />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    size="lg"
+                                    id="smtpSederajat"
+                                    type="text"
+                                    placeholder=""
+                                    value={smtpSederajat}
+                                    onChange={(e) => setSmtpSederajat(e.target.value)}
+                                />
+                            </InputGroup>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={2} sm={12}>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Tahun Kelulusan</Form.Label>
+                            <InputGroup>
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>
+                                        <FaRegCalendarAlt />
+                                    </InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    as="select"
+                                    size="lg"
+                                    value={tahunSdSederajat}
+                                    onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
                                     {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
                                 </Form.Control>
                             </InputGroup>

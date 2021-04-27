@@ -8,7 +8,6 @@ const Addnew = () => {
     const [nik, setNik] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-
     const handleSubmit = (e) => {
         if (nik !== "" && password !== "") {
             e.preventDefault();
@@ -87,13 +86,6 @@ const Addnew = () => {
                 <Button size="lg" variant="link" href="login" block>Login</Button>
             </Form>
         </Container>
-
-
     )
 }
 export default Addnew
-
-
-
-
-

@@ -7,27 +7,30 @@ class NavComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: {}
+            user: {},
+            userdata: null
         }
     }
 
     componentDidMount() {
         let user = JSON.parse(localStorage.getItem('user'))
-        this.setState({ user: user })
+        let userdata = JSON.parse(localStorage.getItem('userdata'))
+        this.setState({ user: user, userdata: userdata })
     }
 
     handleLogout() {
         localStorage.removeItem("user");
+        localStorage.removeItem("userdata");
         Router.push("/")
     }
 
     render() {
-        const { user } = this.state
+        const { user, userdata } = this.state
         return (
             <>
 
                 <Navbar sticky="top" bg="light">
-                    <Navbar.Brand href="/">SiPelita MBD</Navbar.Brand>
+                    <Navbar.Brand href="/">Si Pelita MBD</Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Nav className="mr-auto justify-content-end">
@@ -36,7 +39,12 @@ class NavComponent extends React.Component {
                             {
                                 user ?
                                     <DropdownButton variant="success" drop="left" title={user.username}>
-                                        <NavDropdown.Item href="biodata">Lihat Kartu Pencari Kerja</NavDropdown.Item>
+                                        {
+                                            userdata ?
+                                                <NavDropdown.Item href="biodata">Lihat Data Pencari Kerja</NavDropdown.Item>
+                                                :
+                                                <NavDropdown.Item href="register">Pendaftaran Pencari Kerja</NavDropdown.Item>
+                                        }
                                         <NavDropdown.Item onClick={this.handleLogout}>Keluar</NavDropdown.Item>
                                     </DropdownButton>
                                     :

@@ -4,7 +4,7 @@ import { Jumbotron } from "react-bootstrap"
 function JumbotronComponent() {
     return (
         <Jumbotron className="text-center">
-            <h1>SiPelita MBD</h1>
+            <h1>Si Pelita MBD</h1>
             <h3>Sistem Pelayanan Informasi Tenaga Kerja<br />Maluku Barat Daya</h3>
         </Jumbotron>
     )

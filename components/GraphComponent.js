@@ -7,6 +7,7 @@ function GraphComponent() {
 
     const [num, setNum] = useState(null)
     const [numUser, setNumUser] = useState(null)
+    const [numFilter, setNumFilter] = useState(null)
 
     fire.firestore().collection('users').get().then(snap => {
         setNumUser(snap.size)
@@ -14,7 +15,11 @@ function GraphComponent() {
     fire.firestore().collection('ak').get().then(snap => {
         setNum(snap.size)
     });
-
+    fire.firestore().collection('ak')
+        .where("agama", "==", "Kristen")
+        .get().then(snap => {
+            setNumFilter(snap.size)
+        });
     const data = {
         labels: ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3', 'Doktor'],
         title: {
@@ -128,7 +133,7 @@ function GraphComponent() {
 
             <div className="my-5 text-center">
                 <h3 className="font-weight-bold my-4">
-                Pencari Kerja Berdasarkan Jenjang Pendidikan
+                    Pencari Kerja Berdasarkan Jenjang Pendidikan
                 </h3>
                 <Bar data={data} />
             </div>

@@ -7,10 +7,8 @@ const Login = () => {
     const router = useRouter()
     const [nik, setNik] = useState("")
     const [password, setPassword] = useState("")
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
         let found = false
         const docRef = fire
             .firestore().collection('users')
@@ -65,4 +63,5 @@ const Login = () => {
         </Container>
     )
 }
+
 export default Login

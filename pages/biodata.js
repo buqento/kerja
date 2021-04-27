@@ -8,87 +8,104 @@ import NavComponent from '../components/NavComponent';
 import fire from '../config/firebase'
 import { useRouter } from 'next/router'
 
+// layanan pengaduan
+// gambar lihat yg terbaru
+
 function Biodata() {
   const router = useRouter()
   const componentRef = useRef();
-  const [userData, setUserdata] = useState(null)
   const [loading, setLoading] = useState(true)
   let nik = null
   if (typeof window !== "undefined") {
     const user = JSON.parse(localStorage.getItem('user'))
     nik = user && user.nik
   }
+  let user = {}
   if (nik) {
-    fire
+    const docRef = fire
       .firestore().collection('ak')
       .where('nik', '==', nik)
-      .get()
-      .then((querySnapshot) => {
-        if (querySnapshot.docs.length > 0) {
-          querySnapshot.forEach((doc) => {
-            const userdata =
-            {
-              noPendaftaran: doc.id,
-              nik: doc.data().nik,
-              namaLengkap: doc.data().namaLengkap,
-              tempatLahir: doc.data().tempatLahir,
-              tanggalLahir: doc.data().tanggalLahir && doc.data().tanggalLahir.toDate().toDateString(),
-              jenisKelamin: doc.data().jenisKelamin,
-              status: doc.data().status,
-              agama: doc.data().agama,
-              alamat: doc.data().alamat,
-              pendidikanFormal:
-              {
-                sdSederajat: {
-                  nama: doc.data().pendidikanFormal.sdSederajat.nama,
-                  tahun: doc.data().pendidikanFormal.sdSederajat.tahun
-                },
-                smtpSederajat: {
-                  nama: doc.data().pendidikanFormal.smtpSederajat.nama,
-                  tahun: doc.data().pendidikanFormal.smtpSederajat.tahun
-                },
-                smtaD1Akta1: {
-                  nama: doc.data().pendidikanFormal.smtaD1Akta1.nama,
-                  tahun: doc.data().pendidikanFormal.smtaD1Akta1.tahun
-                },
-                smD2d3: {
-                  nama: doc.data().pendidikanFormal.smD2d3.nama,
-                  tahun: doc.data().pendidikanFormal.smD2d3.tahun
-                },
-                akta2: {
-                  nama: doc.data().pendidikanFormal.akta2.nama,
-                  tahun: doc.data().pendidikanFormal.akta2.tahun
-                },
-                akta3: {
-                  nama: doc.data().pendidikanFormal.akta3.nama,
-                  tahun: doc.data().pendidikanFormal.akta3.tahun
-                },
-                s3PascaS1Akta4D4: {
-                  nama: doc.data().pendidikanFormal.s3PascaS1Akta4D4.nama,
-                  tahun: doc.data().pendidikanFormal.s3PascaS1Akta4D4.tahun
-                },
-                doktor2Akta5: {
-                  nama: doc.data().pendidikanFormal.doktor2Akta5.nama,
-                  tahun: doc.data().pendidikanFormal.doktor2Akta5.tahun
-                }
-              },
-              keterampilan: {
-                keterampilan1: doc.data().keterampilan.keterampilan1,
-                keterampilan2: doc.data().keterampilan.keterampilan2,
-                keterampilan3: doc.data().keterampilan.keterampilan3
-              }
-            }
-            setUserdata(userdata)
-            setLoading(false)
-          });
-        } else {
-          router.push('register')
+    docRef.onSnapshot(snap => {
+      const data = snap.docs.map(doc => ({
+        id: doc.id, ...doc.data()
+      }))
+      data && setLoading(false)
+      data.length > 0 && localStorage.setItem('userdata', JSON.stringify(data[0]))
+    })
+
+    if (typeof window !== "undefined") {
+      const userData = JSON.parse(localStorage.getItem('userdata'))
+      if (userData && Object.keys(userData).length !== null) {
+        let pendidikanFormal = {}
+        if (userData.pendidikanFormal.sdSederajat) pendidikanFormal.sdSederajat = {
+          nama: userData.pendidikanFormal.sdSederajat.nama,
+          tahun: userData.pendidikanFormal.sdSederajat.tahun
         }
-      })
-      .then(() => {
-      })
-      .catch(err => console.log(err))
+        if (userData.pendidikanFormal.smtpSederajat) pendidikanFormal.smtpSederajat = {
+          nama: userData.pendidikanFormal.smtpSederajat.nama,
+          tahun: userData.pendidikanFormal.smtpSederajat.tahun
+        }
+        if (userData.pendidikanFormal.smtaD1Akta1) pendidikanFormal.smtaD1Akta1 = {
+          nama: userData.pendidikanFormal.smtaD1Akta1.nama,
+          tahun: userData.pendidikanFormal.smtaD1Akta1.tahun
+        }
+        if (userData.pendidikanFormal.smD2d3) pendidikanFormal.smD2d3 = {
+          nama: userData.pendidikanFormal.smD2d3.nama,
+          tahun: userData.pendidikanFormal.smD2d3.tahun
+        }
+        if (userData.pendidikanFormal.akta2) pendidikanFormal.akta2 = {
+          nama: userData.pendidikanFormal.akta2.nama,
+          tahun: userData.pendidikanFormal.akta2.tahun
+        }
+        if (userData.pendidikanFormal.akta3) pendidikanFormal.akta3 = {
+          nama: userData.pendidikanFormal.akta3.nama,
+          tahun: userData.pendidikanFormal.akta3.tahun
+        }
+        if (userData.pendidikanFormal.s3PascaS1Akta4D4) pendidikanFormal.s3PascaS1Akta4D4 = {
+          nama: userData.pendidikanFormal.s3PascaS1Akta4D4.nama,
+          tahun: userData.pendidikanFormal.s3PascaS1Akta4D4.tahun
+        }
+        if (userData.pendidikanFormal.doktor2Akta5) pendidikanFormal.doktor2Akta5 = {
+          nama: userData.pendidikanFormal.doktor2Akta5.nama,
+          tahun: userData.pendidikanFormal.doktor2Akta5.tahun
+        }
+
+        var s = userData.tanggalLahir && userData.tanggalLahir.seconds
+        var curdate = new Date(null);
+        curdate.setTime(s * 1000);
+        var date = new Date(curdate);
+        var day = date.getDate()
+        var month = date.getMonth()+1
+        var year = date.getFullYear()
+        const tLahir = day+'/'+month+'/'+year
+
+        user = {
+          noPendaftaran: userData.id,
+          nik: userData.nik,
+          namaLengkap: userData.namaLengkap,
+          tempatLahir: userData.tempatLahir,
+          tanggalLahir: tLahir,
+          jenisKelamin: userData.jenisKelamin,
+          status: userData.status,
+          agama: userData.agama,
+          alamat: userData.alamat,
+          telepon: userData.telepon,
+          keterampilan: {
+            keterampilan1: userData.keterampilan.keterampilan1,
+            keterampilan2: userData.keterampilan.keterampilan2,
+            keterampilan3: userData.keterampilan.keterampilan3
+          },
+          pendidikanFormal: pendidikanFormal
+        }
+
+
+
+      } else {
+        router.push('register')
+      }
+    }
   }
+
   return (
     <>
       <Head>
@@ -102,7 +119,7 @@ function Biodata() {
           :
           <div>
             <Container className="mt-4">
-              <BioPrint ref={componentRef} user={userData} />
+              <BioPrint ref={componentRef} user={user} />
               <ReactToPrint
                 trigger={() => <Button block className="mb-4 lg" size="lg">Cetak</Button>}
                 content={() => componentRef.current}
