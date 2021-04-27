@@ -357,7 +357,7 @@ const FormRegist = (props) => {
                                 <Form.Control
                                     as="select"
                                     size="lg"
-                                    value={tahunSmtpSederajat}
+                                    value={tahunSdSederajat}
                                     onChange={(e) => setTahunSdSederajat(e.target.value)}>
                                     {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
                                 </Form.Control>
@@ -398,7 +398,7 @@ const FormRegist = (props) => {
                                 <Form.Control
                                     as="select"
                                     size="lg"
-                                    value={tahunSdSederajat}
+                                    value={tahunSmtpSederajat }
                                     onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
                                     {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
                                 </Form.Control>
