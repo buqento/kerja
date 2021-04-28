@@ -25,7 +25,11 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya</title>
+        <title>Si Pelita MBD - Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya</title>
+        <meta property="og:title" content="Si Pelita MBD - Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.sipelitambd.com/" />
+        <meta property="og:image" content="https://www.sipelitambd.com/images/pelantikan.jpg" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavComponent />
