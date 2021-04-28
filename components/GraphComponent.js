@@ -7,6 +7,7 @@ function GraphComponent() {
 
     const [num, setNum] = useState(null)
     const [numUser, setNumUser] = useState(null)
+
     const [sd, setNumSd] = useState(null)
     const [smp, setNumSmp] = useState(null)
     const [sma, setNumSma] = useState(null)
@@ -16,36 +17,93 @@ function GraphComponent() {
     const [s3, setNumS3] = useState(null)
     const [doktor, setNumDoktor] = useState(null)
 
-    const refAcademy = fire.firestore().collection('ak')
+    const [sdP, setNumSdP] = useState(null)
+    const [smpP, setNumSmpP] = useState(null)
+    const [smaP, setNumSmaP] = useState(null)
+    const [diplomaP, setNumDiplomaP] = useState(null)
+    const [s1P, setNumS1P] = useState(null)
+    const [s2P, setNumS2P] = useState(null)
+    const [s3P, setNumS3P] = useState(null)
+    const [doktorP, setNumDoktorP] = useState(null)
 
     fire.firestore().collection('users').get().then(snap => {
         setNumUser(snap.size)
     });
+
+    const refAcademy = fire.firestore().collection('ak')
+
     refAcademy.get().then(snap => { setNum(snap.size) });
+
+    // laki-laki
     refAcademy
-        .where("pendidikanFormal.sdSederajat.nama", "!=", "")
-        .get().then(snap => { setNumSd(snap.size) });
+        .where('pendidikanFormal.sdSederajat.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumSdP(snapshot.docs.length) })
     refAcademy
-        .where("pendidikanFormal.smtpSederajat.nama", "!=", "")
-        .get().then(snap => { setNumSmp(snap.size) });
+        .where('pendidikanFormal.smtpSederajat.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumSmpP(snapshot.docs.length) })
     refAcademy
-        .where("pendidikanFormal.smtaD1Akta1.nama", "!=", "")
-        .get().then(snap => { setNumSma(snap.size) });
+        .where('pendidikanFormal.smtaD1Akta1.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumSmaP(snapshot.docs.length) })
     refAcademy
-        .where("pendidikanFormal.smD2d3.nama", "!=", "")
-        .get().then(snap => { setNumDiploma(snap.size) });
+        .where('pendidikanFormal.smD2d3.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumDiplomaP(snapshot.docs.length) })
     refAcademy
-        .where("pendidikanFormal.akta2.nama", "!=", "")
-        .get().then(snap => { setNumS1(snap.size) });
+        .where('pendidikanFormal.akta2.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumS1P(snapshot.docs.length) })
     refAcademy
-        .where("pendidikanFormal.akta3.nama", "!=", "")
-        .get().then(snap => { setNumS2(snap.size) });
+        .where('pendidikanFormal.akta3.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumS2P(snapshot.docs.length) })
+
     refAcademy
-        .where("pendidikanFormal.s3PascaS1Akta4D4.nama", "!=", "")
-        .get().then(snap => { setNumS3(snap.size) });
+        .where('pendidikanFormal.s3PascaS1Akta4D4.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumS3P(snapshot.docs.length) })
     refAcademy
-        .where("pendidikanFormal.doktor2Akta5.nama", "!=", "")
-        .get().then(snap => { setNumDoktor(snap.size) });
+        .where('pendidikanFormal.doktor2Akta5.nama', '!=', '')
+        .where('jenisKelamin', '==', "Laki-laki")
+        .onSnapshot(snapshot => { setNumDoktorP(snapshot.docs.length) })
+
+    // laki-laki
+    refAcademy
+        .where('pendidikanFormal.sdSederajat.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumSd(snapshot.docs.length) })
+    refAcademy
+        .where('pendidikanFormal.smtpSederajat.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumSmp(snapshot.docs.length) })
+    refAcademy
+        .where('pendidikanFormal.smtaD1Akta1.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumSma(snapshot.docs.length) })
+    refAcademy
+        .where('pendidikanFormal.smD2d3.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumDiploma(snapshot.docs.length) })
+    refAcademy
+        .where('pendidikanFormal.akta2.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumS1(snapshot.docs.length) })
+    refAcademy
+        .where('pendidikanFormal.akta3.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumS2(snapshot.docs.length) })
+
+    refAcademy
+        .where('pendidikanFormal.s3PascaS1Akta4D4.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumS3(snapshot.docs.length) })
+    refAcademy
+        .where('pendidikanFormal.doktor2Akta5.nama', '!=', '')
+        .where('jenisKelamin', '==', "Perempuan")
+        .onSnapshot(snapshot => { setNumDoktor(snapshot.docs.length) })
+
     const data = {
         labels: ['SD', 'SMP', 'SMA', 'Diploma', 'S1', 'S2', 'S3', 'Doktor'],
         title: {
@@ -53,15 +111,25 @@ function GraphComponent() {
         },
         datasets: [
             {
-                label: 'Jenjang Pendidikan',
-                data: [sd, smp, sma, diploma, s1, s2, s3, doktor],
+                label: 'Laki-laki',
+                data: [sdP, smpP, smaP, diplomaP, s1P, s2P, s3P, doktorP],
                 // tension: 0,
                 // borderColor: "rgb(248,169,113)",
-                backgroundColor: "blue",
+                backgroundColor: "#007bff",
                 radius: 0,
                 borderWidth: 1,
                 pointHitRadius: 5
-            }
+            },
+            {
+                label: 'Perempuan',
+                data: [sd, smp, sma, diploma, s1, s2, s3, doktor],
+                // tension: 0,
+                // borderColor: "rgb(248,169,113)",
+                backgroundColor: "#777",
+                radius: 0,
+                borderWidth: 1,
+                pointHitRadius: 5
+            },
         ]
     };
 
@@ -148,7 +216,7 @@ function GraphComponent() {
             </Row>
 
             <div className="my-5 text-center">
-                <h3 className="font-weight-bold my-4">
+                <h3 className="my-4">
                     Pencari Kerja Berdasarkan Jenjang Pendidikan
                 </h3>
                 <Bar data={data} />
