@@ -6,7 +6,6 @@ import FooterComponent from '../components/FooterComponent'
 import NavComponent from '../components/NavComponent'
 import GraphComponent from '../components/GraphComponent'
 import MapComponent from '../components/MapComponent'
-import { FaWhatsapp } from 'react-icons/fa'
 
 function Home() {
 
@@ -39,7 +38,7 @@ function Home() {
       <GraphComponent />
       <MapComponent />
       <FooterComponent />
-      <a href="https://wa.me/6281343418243" style={cStyle}><FaWhatsapp size={40} /></a>
+      {/* <a href="https://wa.me/6281343418243" style={cStyle}><FaWhatsapp size={40} /></a> */}
     </>
   )
 }

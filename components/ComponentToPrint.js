@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Table, Button, Breadcrumb } from 'react-bootstrap'
+import { Container, Table } from 'react-bootstrap'
 import moment from 'moment'
 
 export class ComponentToPrint extends React.PureComponent {
@@ -19,7 +19,7 @@ export class ComponentToPrint extends React.PureComponent {
 
         return (
             <Container>
-                <h1>Data Pendaftar AK.1 Pencari Kerja</h1>
+                <h1 className="py-5">Data Pendaftar AK.1 Pencari Kerja</h1>
 
                 <Table striped bordered hover>
                     <thead>

@@ -30,7 +30,7 @@ class NavComponent extends React.Component {
             <>
                 <Navbar sticky="top" bg="light">
                     <Navbar.Brand href="/">
-                        <HiOutlineHome className="mb-1 mr-2" size={28} color="blue" />Si Pelita MBD</Navbar.Brand>
+                        <HiOutlineHome className="mb-1 mr-2" size={28} color="#007bff" />Si Pelita MBD</Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Nav className="mr-auto justify-content-end">

@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useRouter } from 'next/router'
 import { FaRegUser, FaRegIdCard, FaRegCalendarAlt, FaBaby, FaPray, FaRegCheckSquare, FaPhone } from 'react-icons/fa';
 import { HiOutlineHome, HiOutlineAcademicCap } from 'react-icons/hi';
+import Head from 'next/head'
 
 const FormRegist = (props) => {
     const router = useRouter()
@@ -398,7 +399,7 @@ const FormRegist = (props) => {
                                 <Form.Control
                                     as="select"
                                     size="lg"
-                                    value={tahunSmtpSederajat }
+                                    value={tahunSmtpSederajat}
                                     onChange={(e) => setTahunSmtpSederajat(e.target.value)}>
                                     {tahun.map((tahun, index) => (<option key={index}>{tahun}</option>))}
                                 </Form.Control>
@@ -739,10 +740,18 @@ class Register extends React.Component {
         const { nik, user } = this.state
         return (
             <>
+                <Head>
+                    <title>Si Pelita MBD - Pendaftaran Pencari Kerja</title>
+                    <meta property="og:title" content="Si Pelita MBD - Pendaftaran Pencari Kerja" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:url" content="https://www.sipelitambd.com/" />
+                    <meta property="og:image" content="https://www.sipelitambd.com/images/pelantikan.jpg" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
                 <NavComponent />
                 <Container>
-                    <h1 className="mt-4">PENDAFTARAN AK.1</h1>
-                    <p>Formulir AK.1 Online diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
+                    <h1 className="mt-4">Pendaftaran Pencari Kerja</h1>
+                    <p>Formulir diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
                     <FormRegist nik={nik} user={user} />
                 </Container>
                 <FooterComponent />

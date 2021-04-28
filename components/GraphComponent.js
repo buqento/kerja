@@ -125,11 +125,21 @@ function GraphComponent() {
                 data: [sd, smp, sma, diploma, s1, s2, s3, doktor],
                 // tension: 0,
                 // borderColor: "rgb(248,169,113)",
-                backgroundColor: "#777",
+                backgroundColor: "#555",
                 radius: 0,
                 borderWidth: 1,
                 pointHitRadius: 5
             },
+            {
+                label: 'Total',
+                data: [sd + sdP, smp + smpP, sma + smaP, diploma + diplomaP, s1 + s1P, s2 + s2P, s3 + s3P, doktor + doktorP],
+                // tension: 0,
+                // borderColor: "rgb(248,169,113)",
+                backgroundColor: "#28a745",
+                radius: 0,
+                borderWidth: 1,
+                pointHitRadius: 5
+            }
         ]
     };
 
