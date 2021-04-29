@@ -42,7 +42,7 @@ function CardComponent() {
                             <Card.Text>
                                 Informasi Lowongan Kerja Resmi oleh Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya.
                             </Card.Text>
-                            <Button variant="light" href="#">Lihat Lowongan Kerja</Button>
+                            <Button variant="light" href="loker">Lihat Lowongan Kerja</Button>
                         </Card.Body>
                     </Card>
                 </Col>

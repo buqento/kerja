@@ -750,7 +750,7 @@ class Register extends React.Component {
                 </Head>
                 <NavComponent />
                 <Container>
-                    <h1 className="mt-4">Pendaftaran Pencari Kerja</h1>
+                    <h1 className="mt-4">PENDAFTARAN PENCARI KERJA</h1>
                     <p>Formulir diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
                     <FormRegist nik={nik} user={user} />
                 </Container>
