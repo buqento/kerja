@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import { FaRegUser, FaRegIdCard, FaRegCalendarAlt, FaBaby, FaPray, FaRegCheckSquare, FaPhone } from 'react-icons/fa';
 import { HiOutlineHome, HiOutlineAcademicCap } from 'react-icons/hi';
 import Head from 'next/head'
+import RelatedComponent from '../components/RelatedComponent';
 
 const FormRegist = (props) => {
     const router = useRouter()
@@ -741,7 +742,7 @@ class Register extends React.Component {
         return (
             <>
                 <Head>
-                    <title>Si Pelita MBD - Pendaftaran Pencari Kerja</title>
+                    <title>Si Pelita MBD - Pendaftaran Kartu Pencari Kerja (AK/I)</title>
                     <meta property="og:title" content="Si Pelita MBD - Pendaftaran Pencari Kerja" />
                     <meta property="og:type" content="website" />
                     <meta property="og:url" content="https://www.sipelitambd.com/" />
@@ -749,8 +750,9 @@ class Register extends React.Component {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <NavComponent />
+                <RelatedComponent />
                 <Container>
-                    <h1 className="mt-4">PENDAFTARAN PENCARI KERJA</h1>
+                    <h1 className="mt-4">KARTU PENCARI KERJA (AK/I)</h1>
                     <p>Formulir diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
                     <FormRegist nik={nik} user={user} />
                 </Container>

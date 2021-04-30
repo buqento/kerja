@@ -21,6 +21,8 @@ function Pengaduan() {
         <h1 className="mt-5">LAYANAN PENGADUAN</h1>
         <h4 className="mb-5">Layanan Aspirasi dan Pengaduan Tenaga Kerja</h4>
 
+        <img src="../images/pengaduan-online.png" className="mb-5 img-fluid"/>
+
         <div className="my-2">
           <FaPhoneSquareAlt size={20} className="mb-1" /> Telepon: 082189592765
         </div>

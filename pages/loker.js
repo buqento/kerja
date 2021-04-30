@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Container } from 'react-bootstrap'
 import NavComponent from '../components/NavComponent'
+import RelatedComponent from '../components/RelatedComponent'
 
 function Loker() {
 
@@ -39,6 +40,7 @@ function Loker() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavComponent />
+      <RelatedComponent />
       <Container className="text-center">
         <h1 className="mt-5">LOWONGAN KERJA</h1>
         {
