@@ -28,8 +28,8 @@ class NavComponent extends React.Component {
         return (
             <>
                 <Navbar sticky="top" bg="light" variant="light">
-                    <Navbar.Brand href="/">
-                        <img src="../images/logo.png" width={300} className="img-fluid" />
+                    <Navbar.Brand href="/" style={{marginBottom:'-10px'}}>
+                        <img src="../images/logo.png" width={40} className="img-fluid mb-3" /><span  className="h1"> Si Pelita</span>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
@@ -38,7 +38,7 @@ class NavComponent extends React.Component {
                         <Navbar.Text>
                             {
                                 user ?
-                                    <DropdownButton variant="success" drop="left" title={user.username}>
+                                    <DropdownButton variant="success" drop="left" size="lg" title={user.username}>
                                         {
                                             userdata ?
                                                 <NavDropdown.Item href="biodata">Lihat Data Pencari Kerja</NavDropdown.Item>
