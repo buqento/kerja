@@ -1,27 +1,76 @@
 import Head from 'next/head'
-import React, { useRef } from 'react';
-import ReactToPrint from 'react-to-print';
-import { ComponentToPrint } from '../components/ComponentToPrint'
-import { Button, Container } from 'react-bootstrap';
+import React from 'react';
+import { Container, Table, Button } from 'react-bootstrap';
+import fire from '../config/firebase'
+import moment from 'moment'
 
-function ListUsers() {
-  const componentRef = useRef();
-  return (
-    <>
-      <Head>
-        <title>Administrator - Daftar Pencari Kerja</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Container className="mt-4">
-        <ReactToPrint
-          trigger={() => <Button>Cetak Daftar Pencari Kerja</Button>}
-          content={() => componentRef.current}
-        />
-        <ComponentToPrint ref={componentRef} />
-      </Container>
+class ListUsers extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      users: null
+    }
+  }
 
-    </>
-  )
+  componentDidMount() {
+    fire.firestore().collection("ak")
+      .get()
+      .then((querySnapshot) => {
+        let listUser = []
+        querySnapshot.forEach((doc) => {
+          const user = {
+            id: doc.id,
+            data: doc.data()
+          }
+          listUser.push(user)
+        });
+        this.setState({ users: listUser })
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  }
+
+  render() {
+    const { users } = this.state
+    console.log(users);
+    return (
+      <>
+        <Head>
+          <title>Administrator - Daftar Pencari Kerja</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Container className="mt-4">
+
+          <h1 className="my-3">Daftar Pencari Kerja</h1>
+
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th className="text-center">#</th>
+                <th>NIK</th>
+                <th>Nama</th>
+                <th className="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                users && users.map((user, indexOfKey) =>
+                  <tr key={indexOfKey}>
+                    <td className="text-center">{indexOfKey + 1}</td>
+                    <td>{user.data.nik}</td>
+                    <td>{user.data.namaLengkap}</td>
+                    <td className="text-center"><Button>Detail</Button></td>
+                    {/* <td>{moment(user.data.date_modified).lang('id').fromNow()}</td> */}
+                  </tr>
+                )
+              }
+            </tbody>
+          </Table>
+        </Container>
+      </>
+    )
+  }
 }
 
 export default ListUsers

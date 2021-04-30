@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown, DropdownButton } from 'react-bootstrap'
 import Router from 'next/router'
-import { HiOutlineHome } from 'react-icons/hi'
 class NavComponent extends React.Component {
 
     constructor(props) {
@@ -28,9 +27,10 @@ class NavComponent extends React.Component {
         const { user, userdata } = this.state
         return (
             <>
-                <Navbar sticky="top" bg="light">
+                <Navbar sticky="top" bg="light" variant="light">
                     <Navbar.Brand href="/">
-                        <HiOutlineHome className="mb-1 mr-2" size={28} color="#007bff" />Si Pelita MBD</Navbar.Brand>
+                        <img src="../images/logo.png" width={300} className="img-fluid" />
+                    </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Nav className="mr-auto justify-content-end">
