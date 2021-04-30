@@ -17,7 +17,7 @@ export class BioPrint extends React.PureComponent {
                             <tbody>
                                 <tr>
                                     <td rowSpan={8}>
-                                        <img src="https://via.placeholder.com/250x300.png?text=Foto 3x4" />
+                                        <img src="https://via.placeholder.com/250x300.png?text=Foto 3x4" className="img-fluid" />
                                     </td>
                                     <td>NIK</td>
                                     <td className="font-weight-bold">: {user.nik}</td>
