@@ -30,7 +30,7 @@ function CardComponent() {
                             <Card.Text>
                                 Pendaftaran Kartu Pencari Kerja (AK/I). Anda dapat membuat Kartu Pencari Kerja (AK/I) disini.
                             </Card.Text>
-                            <Button variant="dark" onClick={handleRegist}>{userdata ? 'Ubah Data Pencari Kerja' : 'Pendaftaran Pencari Kerja'}</Button>
+                            <Button variant="dark" size="lg" onClick={handleRegist}>{userdata ? 'Ubah Data Pencari Kerja' : 'Pendaftaran Pencari Kerja'}</Button>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -42,7 +42,7 @@ function CardComponent() {
                             <Card.Text>
                                 Informasi Lowongan Kerja Resmi oleh Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya.
                             </Card.Text>
-                            <Button variant="light" href="loker">Lihat Lowongan Kerja</Button>
+                            <Button variant="light" size="lg" href="loker">Lihat Lowongan Kerja</Button>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -54,7 +54,7 @@ function CardComponent() {
                             <Card.Text>
                                 Tenaga kerja dapat menyampaikan permasalahan yang terkait dengan ketenagakerjaan.
                             </Card.Text>
-                            <Button variant="light" href="pengaduan">Selengkapnya</Button>
+                            <Button variant="light" size="lg" href="pengaduan">Selengkapnya</Button>
                         </Card.Body>
                     </Card>
                 </Col>
