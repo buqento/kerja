@@ -16,7 +16,7 @@ function CardComponent() {
                             <Card.Text>
                                 Pendaftaran Kartu Pencari Kerja (AK/I). Anda dapat membuat Kartu Pencari Kerja (AK/I) disini.
                             </Card.Text>
-                            <Button variant="dark" size="lg" href="alurpendaftaran">Selengkapnya</Button>
+                            <Button variant="light" size="lg" href="alurpendaftaran">Selengkapnya</Button>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -26,26 +26,26 @@ function CardComponent() {
                             <div className="mb-4"><ImUserTie size={48} /></div>
                             <Card.Title>LOWONGAN KERJA</Card.Title>
                             <Card.Text>
-                                Informasi Lowongan Kerja Resmi oleh Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya.
+                                Layanan Informasi Lowongan Kerja Resmi oleh Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya.
                             </Card.Text>
                             <Button variant="light" size="lg" href="loker">Lihat Lowongan</Button>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col lg={3} sm={12} className="mb-3 text-center">
-                    <Card bg="danger" text="white">
+                    <Card bg="info" text="white">
                         <Card.Body>
                             <div className="mb-4"><BsNewspaper size={48} /></div>
                             <Card.Title>BERITA &amp; REGULASI TERBARU</Card.Title>
                             <Card.Text>
                             Informasi dan kegiatan yang berkaitan dengan tenaga kerja serta informasi regulasi terbaru.
                             </Card.Text>
-                            <Button variant="light" size="lg" href="news">Selengkapnya</Button>
+                            <Button variant="light" size="lg" href="informasi">Selengkapnya</Button>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col lg={3} sm={12} className="mb-3 text-center">
-                    <Card bg="info" text="white">
+                    <Card bg="danger" text="white">
                         <Card.Body>
                             <div className="mb-4"><FaBullhorn size={48} /></div>
                             <Card.Title>LAYANAN PENGADUAN</Card.Title>

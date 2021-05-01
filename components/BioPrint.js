@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Table } from 'react-bootstrap'
+import { Container, Image, Table } from 'react-bootstrap'
 import { shape } from 'prop-types'
 
 export class BioPrint extends React.PureComponent {
@@ -17,7 +17,7 @@ export class BioPrint extends React.PureComponent {
                             <tbody>
                                 <tr>
                                     <td rowSpan={8}>
-                                        <img src="https://via.placeholder.com/250x300.png?text=Foto 3x4" className="img-fluid" />
+                                        <Image src="https://via.placeholder.com/250x300.png?text=Foto 3x4" className="img-fluid" thumbnail />
                                     </td>
                                     <td>NIK</td>
                                     <td className="font-weight-bold">: {user.nik}</td>

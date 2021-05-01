@@ -5,7 +5,6 @@ import JumbotronComponent from '../components/JumbotronComponent'
 import FooterComponent from '../components/FooterComponent'
 import NavComponent from '../components/NavComponent'
 import GraphComponent from '../components/GraphComponent'
-import MapComponent from '../components/MapComponent'
 
 function Home() {
 
@@ -36,7 +35,6 @@ function Home() {
       <JumbotronComponent />
       <CardComponent />
       <GraphComponent />
-      <MapComponent />
       <FooterComponent />
       {/* <a href="https://wa.me/6281343418243" style={cStyle}><FaWhatsapp size={40} /></a> */}
     </>

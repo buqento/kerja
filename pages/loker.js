@@ -1,7 +1,9 @@
 import Head from 'next/head'
-import { Container } from 'react-bootstrap'
+import { Card, Col, Container, Image, Row } from 'react-bootstrap'
+import FooterComponent from '../components/FooterComponent'
 import NavComponent from '../components/NavComponent'
 import RelatedComponent from '../components/RelatedComponent'
+import TopComponent from '../components/TopComponent'
 
 function Loker() {
 
@@ -12,13 +14,6 @@ function Loker() {
       description: 'Bank Perkreditan Modern Ekspress membuka lowongan tenaga kerja profesional untuk posisi Marketing Officer. Lokasi kerja Kantor Cabang Tiakur. Pendaftaran ditutup pada tanggal 31 April 2021.',
       image: 'loker1.png',
       dateCreated: '20 April 2021'
-    },
-    {
-      title: 'Seleksi pelatihan Balai Latihan Kerja Ambon 2021',
-      by: 'Balai Latihan Kerja Ambon',
-      description: 'Seleksi pelatihan berbasis kompetensi Balai Latihan Kerja Ambon tahun 2021. Pendaftaran ditutup pada tanggal 22 Mei 2021.',
-      image: 'loker2.png',
-      dateCreated: '16 April 2021'
     },
     {
       title: 'Staf administrasi, supervisor, dan fixed plant PT Batutua Kharisma Permai',
@@ -39,25 +34,38 @@ function Loker() {
         <meta property="og:image" content="https://www.sipelitambd.com/images/pelantikan.jpg" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavComponent />
-      <RelatedComponent />
-      <Container className="text-center">
-        <h1 className="mt-5">LOWONGAN KERJA</h1>
-        {
-          data.map((item, index) =>
-            <div className="my-5" key={index}>
-              <h3 className="font-weight-bold text-capitalize">{item.title}</h3>
-              <div>
-                Tanggal posting: <strong>{item.dateCreated}</strong>
-              </div>
-              <div>{item.description}</div>
-              <div className="pb-3">Penyelenggara: <strong className="text-capitalize">{item.by}</strong></div>
-              <img src={`../images/loker/${item.image}`} className="img-fluid" width={600} />
-              <hr />
-            </div>
-          )
-        }
+      <TopComponent />
+      <Container>
+        <div className="mt-3 p-2 text-center font-weight-bold text-white" style={{ backgroundColor: "#28a745", width: "200px" }}>LOWONGAN KERJA</div>
+        <Row className="my-3 text-center">
+          <Col lg={9} sm={12}>
+            {
+              data.map((item, index) =>
+                <div className="my-5" key={index}>
+                  <h3 className="font-weight-bold text-capitalize">{item.title}</h3>
+                  <div>
+                    Tanggal posting: <strong>{item.dateCreated}</strong>
+                  </div>
+                  <div>{item.description}</div>
+                  <div className="pb-3">Penyelenggara: <strong className="text-capitalize">{item.by}</strong></div>
+                  <Image src={`../images/loker/${item.image}`} className="img-fluid" width={600} thumbnail />
+                  <hr />
+                </div>
+              )
+            }
+          </Col>
+          <Col lg={3} sm={12}>
+            <RelatedComponent />
+            <Card className="mt-3">
+              <Card.Body>
+                <Image src="../images/loker/lokerads1.png" className="img-fluid mb-3" thumbnail />
+                <Image src="../images/loker/lokerads2.png" className="img-fluid" thumbnail />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
+      <FooterComponent />
     </>
   )
 }

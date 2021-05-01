@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
-import fire from '../config/firebase'
+import fire from '../../config/firebase'
 import { useRouter } from 'next/router'
 
 const Admin = () => {

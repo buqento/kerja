@@ -1,12 +1,10 @@
-import { FaFacebookSquare } from 'react-icons/fa'
+import MapComponent from './MapComponent'
 function FooterComponent() {
     return (
-        <div className="p-5" style={{ backgroundColor: '#444', color: "#fff" }}>
-            <small>Copyright &copy; 2021 All Rights Reserved<br />Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya</small>
-            <div>
-                <a href="https://web.facebook.com/lowongankerja.mbd" target="blank">
-                    <FaFacebookSquare size={20} color="#fff" />
-                </a>
+        <div className="pt-3">
+            <MapComponent />
+            <div className="p-3">
+                <small>Copyright &copy; 2021 All Rights Reserved<br />Dinas Penanaman Modal dan PTSP Kabupaten Maluku Barat Daya</small>
             </div>
         </div>
     )

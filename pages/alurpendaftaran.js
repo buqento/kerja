@@ -1,8 +1,9 @@
 import Head from 'next/head'
-import { Container, Button } from 'react-bootstrap'
+import { Container, Button, Row, Col } from 'react-bootstrap'
 import NavComponent from '../components/NavComponent'
 import { useRouter } from 'next/router'
 import RelatedComponent from '../components/RelatedComponent'
+import FooterComponent from '../components/FooterComponent'
 
 function Alurpendaftaran() {
   const router = useRouter()
@@ -30,15 +31,22 @@ function Alurpendaftaran() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavComponent />
-      <RelatedComponent />
       <Container className="text-center">
-        <h1 className="my-5">ALUR PENDAFTARAN<br />KARTU PENCARI KERJA (AK/I)</h1>
-        <div>
-          <img src="../images/alurpendaftaran.jpg" className="img-fluid" width={600} />
-        </div>
-        <hr />
-        <Button variant="primary" size="lg" className="my-5" onClick={handleRegist}>{userdata ? 'Ubah Data' : 'Pendaftaran'} Kartu Pencari Kerja (AK/I)</Button>
+      <div className="mt-3 p-2 text-center font-weight-bold text-white" style={{ backgroundColor: "#ffc107", width: "200px" }}>ALUR PENDAFTARAN</div>
+        <Row className="my-3">
+          <Col lg={9} sm={12}>
+            <div>
+              <img src="../images/alurpendaftaran.jpg" className="img-fluid" width={600} />
+            </div>
+            <hr />
+            <Button variant="primary" size="lg" onClick={handleRegist}>{userdata ? 'Ubah Data' : 'Pendaftaran'} Kartu Pencari Kerja (AK/I)</Button>
+          </Col>
+          <Col lg={3} sm={12}>
+            <RelatedComponent />
+          </Col>
+        </Row>
       </Container>
+      <FooterComponent />
     </>
   )
 }

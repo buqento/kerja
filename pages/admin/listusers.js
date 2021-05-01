@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import React from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
-import fire from '../config/firebase'
+import fire from '../../config/firebase'
+import NavAdmin from './NavAdmin'
 import moment from 'moment'
 
 class ListUsers extends React.Component {
@@ -37,12 +38,14 @@ class ListUsers extends React.Component {
     return (
       <>
         <Head>
-          <title>Administrator - Daftar Pencari Kerja</title>
+          <title>Administrator - Daftar Kartu Pencari Kerja (AK/I)</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        <NavAdmin />
+
         <Container className="mt-4">
 
-          <h1 className="my-3">Daftar Pencari Kerja</h1>
+          <h1 className="my-3">Daftar Kartu Pencari Kerja (AK/I)</h1>
 
           <Table striped bordered hover>
             <thead>
@@ -50,7 +53,9 @@ class ListUsers extends React.Component {
                 <th className="text-center">#</th>
                 <th>NIK</th>
                 <th>Nama</th>
-                <th className="text-center">Action</th>
+                <th>Jenis Kelamin</th>
+                <th>Tanggal Mendaftar</th>
+                {/* <th className="text-center">Action</th> */}
               </tr>
             </thead>
             <tbody>
@@ -60,8 +65,9 @@ class ListUsers extends React.Component {
                     <td className="text-center">{indexOfKey + 1}</td>
                     <td>{user.data.nik}</td>
                     <td>{user.data.namaLengkap}</td>
-                    <td className="text-center"><Button>Detail</Button></td>
-                    {/* <td>{moment(user.data.date_modified).lang('id').fromNow()}</td> */}
+                    <td>{user.data.jenisKelamin}</td>
+                    {/* <td className="text-center"><Button>Detail</Button></td> */}
+                    <td>{moment(user.data.date_modified).lang('id').fromNow()}</td>
                   </tr>
                 )
               }

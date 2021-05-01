@@ -2,7 +2,9 @@ import Head from 'next/head'
 import { Container } from 'react-bootstrap'
 import { FaWhatsapp, FaFacebookSquare, FaPhone, FaPhoneSquare, FaPhoneSquareAlt } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
+import FooterComponent from '../components/FooterComponent'
 import NavComponent from '../components/NavComponent'
+import TopComponent from '../components/TopComponent'
 
 function Pengaduan() {
 
@@ -16,12 +18,14 @@ function Pengaduan() {
         <meta property="og:image" content="https://www.sipelitambd.com/images/pelantikan.jpg" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavComponent />
-      <Container className="text-center">
-        <h1 className="mt-5">LAYANAN PENGADUAN</h1>
-        <h4 className="mb-5">Layanan Aspirasi dan Pengaduan Tenaga Kerja</h4>
 
-        <img src="../images/pengaduan-online.png" className="mb-5 img-fluid"/>
+      <TopComponent />
+
+      <Container className="text-center">
+
+        <div className="mt-3 p-2 text-center font-weight-bold text-white" style={{ backgroundColor: "#dc3545", width: "200px" }}>LAYANAN PENGADUAN</div>
+
+        <img src="../images/pengaduan-online.png" className="mb-5 img-fluid" />
 
         <div className="my-2">
           <FaPhoneSquareAlt size={20} className="mb-1" /> Telepon: 082189592765
@@ -33,7 +37,7 @@ function Pengaduan() {
           <HiOutlineMail size={24} className="mb-1" /> Email: nakertransmbd@yahoo.com
         </div>
         <div className="my-2">
-        <FaFacebookSquare size={20} className="mb-1" /> Facebook: <a href="https://web.facebook.com/lowongankerja.mbd" target="blank">Lowongan Kerja MBD</a>
+          <FaFacebookSquare size={20} className="mb-1" /> Facebook: <a href="https://web.facebook.com/lowongankerja.mbd" target="blank">Lowongan Kerja MBD</a>
         </div>
 
         <div className="my-5">
@@ -41,8 +45,10 @@ function Pengaduan() {
           <a href="https://www.malukubaratdayakab.go.id/" target="blank">www.malukubaratdayakab.go.id</a>
         </div>
 
-        
+
       </Container>
+
+      <FooterComponent />
     </>
   )
 }

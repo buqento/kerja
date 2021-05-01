@@ -327,7 +327,7 @@ const FormRegist = (props) => {
                 </Row>
                 <h2>Pendidikan Formal</h2>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Sekolah Dasar</Form.Label>
                             <InputGroup>
@@ -347,7 +347,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -368,7 +368,7 @@ const FormRegist = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Sekolah Menengah Pertama</Form.Label>
                             <InputGroup>
@@ -388,7 +388,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -409,7 +409,7 @@ const FormRegist = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Sekolah Menengah Atas</Form.Label>
                             <InputGroup>
@@ -429,7 +429,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -450,7 +450,7 @@ const FormRegist = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Pendidikan Tinggi Diploma</Form.Label>
                             <InputGroup>
@@ -470,7 +470,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -491,7 +491,7 @@ const FormRegist = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Pendidikan Tinggi Strata 1</Form.Label>
                             <InputGroup>
@@ -511,7 +511,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -532,7 +532,7 @@ const FormRegist = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Pendidikan Tinggi Strata 2</Form.Label>
                             <InputGroup>
@@ -552,7 +552,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -573,7 +573,7 @@ const FormRegist = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Pendidikan Tinggi Strata 3</Form.Label>
                             <InputGroup>
@@ -593,7 +593,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -614,7 +614,7 @@ const FormRegist = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={10} sm={12}>
+                    <Col lg={9} sm={12}>
                         <Form.Group>
                             <Form.Label>Pendidikan Tinggi Doktor</Form.Label>
                             <InputGroup>
@@ -634,7 +634,7 @@ const FormRegist = (props) => {
                             </InputGroup>
                         </Form.Group>
                     </Col>
-                    <Col lg={2} sm={12}>
+                    <Col lg={3} sm={12}>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Tahun Kelulusan</Form.Label>
                             <InputGroup>
@@ -750,11 +750,16 @@ class Register extends React.Component {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <NavComponent />
-                <RelatedComponent />
                 <Container>
-                    <h1 className="mt-4">KARTU PENCARI KERJA (AK/I)</h1>
-                    <p>Formulir diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
-                    <FormRegist nik={nik} user={user} />
+                    <Row className="my-3">
+                        <Col lg={9} sm={12}>
+                            <h1>KARTU PENCARI KERJA (AK/I)</h1>
+                            <p>Formulir diisi dengan data sebenar-benarnya mohon baca petunjuk dengan baik.</p>
+                            <FormRegist nik={nik} user={user} />          </Col>
+                        <Col lg={3} sm={12}>
+                            <RelatedComponent />
+                        </Col>
+                    </Row>
                 </Container>
                 <FooterComponent />
             </>
