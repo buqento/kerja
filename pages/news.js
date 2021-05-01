@@ -1,8 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import { Col, Container, Image, Row } from 'react-bootstrap'
+import { Card, Col, Container, Image, Row } from 'react-bootstrap'
 import RelatedComponent from '../components/RelatedComponent'
-import fire from '../config/firebase'
 import FooterComponent from '../components/FooterComponent'
 import TopComponent from '../components/TopComponent'
 
@@ -123,6 +122,12 @@ class News extends React.Component {
 
             <Col lg={3} sm={12} className="text-center">
               <RelatedComponent />
+              <Card className="mt-3">
+                <Card.Body>
+                  <img src="../images/vaksin.jpg" className="img-fluid mb-3" />
+                  <img src="../images/pkk.jpg" className="img-fluid" />
+                </Card.Body>
+              </Card>
             </Col>
 
           </Row>

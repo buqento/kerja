@@ -61,7 +61,7 @@ class Informasi extends React.Component {
         <Container>
 
           <Row className="mt-4">
-            <Col lg={9} sm={12} className="text-center">
+            <Col lg={9} sm={12} className="text-center mb-3">
               <SlideInfoComponent />
             </Col>
             <Col lg={3} sm={12} className="text-center">
@@ -92,11 +92,12 @@ class Informasi extends React.Component {
                   <Image src="../images/news/card4.png" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'center', width: '350px', height: '200px' }} thumbnail />
                   Sukseskan Pendataan Keluarga Tahun 2021
                 </Col>
-              </Row>            </Col>
-
+              </Row>
+            </Col>
           </Row>
 
         </Container>
+
         <FooterComponent />
 
       </>
