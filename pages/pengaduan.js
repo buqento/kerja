@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Container } from 'react-bootstrap'
+import { Container, Image } from 'react-bootstrap'
 import { FaWhatsapp, FaFacebookSquare, FaPhone, FaPhoneSquare, FaPhoneSquareAlt } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import FooterComponent from '../components/FooterComponent'
@@ -25,7 +25,7 @@ function Pengaduan() {
 
         <div className="mt-3 p-2 text-center font-weight-bold text-white" style={{ backgroundColor: "#dc3545", width: "200px" }}>LAYANAN PENGADUAN</div>
 
-        <img src="../images/pengaduan-online.png" className="mb-5 img-fluid" />
+        <Image src="../images/pengaduan-online.png" className="mb-5 img-fluid" />
 
         <div className="my-2">
           <FaPhoneSquareAlt size={20} className="mb-1" /> Telepon: 082189592765
@@ -45,6 +45,7 @@ function Pengaduan() {
           <a href="https://www.malukubaratdayakab.go.id/" target="blank">www.malukubaratdayakab.go.id</a>
         </div>
 
+        <Image src="../images/pengaduan-masyarakat.jpg" className="mb-5 w-50 img-fluid" />
 
       </Container>
 

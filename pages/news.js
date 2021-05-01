@@ -1,50 +1,46 @@
 import React from 'react'
 import Head from 'next/head'
-import { Col, Container, Image, Jumbotron, Nav, Row } from 'react-bootstrap'
-import NavComponent from '../components/NavComponent'
+import { Col, Container, Image, Row } from 'react-bootstrap'
 import RelatedComponent from '../components/RelatedComponent'
 import fire from '../config/firebase'
-import moment from 'moment'
 import FooterComponent from '../components/FooterComponent'
-import SlideComponent from '../components/SlideComponent'
 import TopComponent from '../components/TopComponent'
 
 class News extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      news: null
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     news: null
+  //   }
+  // }
 
-  componentDidMount() {
-    fire.firestore().collection("news")
-      .get()
-      .then((querySnapshot) => {
-        let listNews = []
-        querySnapshot.forEach((doc) => {
-          const newsData = {
-            id: doc.id,
-            data: doc.data()
-          }
-          listNews.push(newsData)
-        });
-        this.setState({ news: listNews })
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
-  }
+  // componentDidMount() {
+  //   fire.firestore().collection("news")
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       let listNews = []
+  //       querySnapshot.forEach((doc) => {
+  //         const newsData = {
+  //           id: doc.id,
+  //           data: doc.data()
+  //         }
+  //         listNews.push(newsData)
+  //       });
+  //       this.setState({ news: listNews })
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error getting documents: ", error);
+  //     });
+  // }
 
   render() {
-    // const { news } = this.state
     const news = [
       {
         data: {
           title: 'Rapat Koordinasi Pembangunan Infrastruktur Transportasi Udara',
           description: 'Bupati Maluku Barat Daya, Benyamin Th. Noach, S.T, didampingi Sekretaris Daerah, Drs. A.Siamiloy, M.Si, Kepala Bappeda, Kepala Dinas PU dan Kepala Dinas Perhubungan menghadiri Rapat Koordinasi Pembangunan Infrastruktur Transportasi Udara dengan Deputi I Kepala Staf Kepresidenan Febry Calvin Tetelepta dan Direktur Bandara Kementerian Perhubungan, Nafthan Syaroni,  bertempat di Ruang Rapat Utama, Kantor Staf Kepresidenan, Jakarta Pusat, Senin (19/4/2021).',
-          image: 'berita4.png'
+          image: 'berita4.jpg'
         }
       },
       {
@@ -101,10 +97,7 @@ class News extends React.Component {
                 news && news.map((item, index) =>
                   <div className="mb-3" key={index}>
                     <h3 className="font-weight-bold text-capitalize">{item.data.title}</h3>
-                    <div className="mb-3">
-                      {/* {moment(newDate).lang('id').fromNow()} */}
-                      5 April 2021 | Oleh: Admin
-                </div>
+                    <div className="mb-3 small">5 April 2021 | Oleh: Admin</div>
                     <Image src={`../images/news/${item.data.image}`} className="img-fluid mb-3" width={600} thumbnail />
                     <div dangerouslySetInnerHTML={{ __html: item.data.description }} />
                     <hr />
@@ -113,18 +106,17 @@ class News extends React.Component {
               }
             </Col>
 
-
             <Col lg={3} sm={12} className="text-center">
               <Row className="mb-3">
                 <Col>
-                  <Image src="../images/news/card1.png" className="img-fluid" thumbnail />
-                  Kantor Dinas Penanaman Modal dan PTSP Kab.MBD
+                  <Image src="../images/news/card2.jpg" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'top', width: '350px', height: '200px' }} thumbnail />
+                  Dukungan Bupati Maluku Barat Daya kepada Si Pelita MBD
                 </Col>
               </Row>
-              <Row>
+              <Row className="mb-3">
                 <Col>
-                  <Image src="../images/news/card2.png" className="img-fluid" thumbnail />
-                  Dukungan Bupati Maluku Barat Daya kepada Si Pelita MBD
+                  <Image src="../images/news/card1.png" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'center', width: '350px', height: '200px' }} thumbnail />
+                  Kantor Dinas Penanaman Modal dan PTSP Kab.MBD
                 </Col>
               </Row>
             </Col>
@@ -134,7 +126,6 @@ class News extends React.Component {
             </Col>
 
           </Row>
-
 
         </Container>
         <FooterComponent />

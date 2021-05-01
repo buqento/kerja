@@ -15,16 +15,15 @@ class TopComponent extends React.Component {
         <Container>
 
           <Row>
-            <Col className="mt-3">
-              <div>Hari ini: {dt}</div>
+            <Col className="mt-3 small">
+              Hari ini: <strong>{dt}</strong>
             </Col>
           </Row>
 
           <Row className="text-left p-3">
-            <Col lg={2} style={{ backgroundColor: "red", color: "#fff" }} className="text-center">
-              Breaking News
+            <Col lg={2} style={{ backgroundColor: "red", color: "#fff" }} className="text-center font-weight-bold py-2">Breaking News
             </Col>
-            <Col ls={10} style={{ backgroundColor: "#777", color: "#fff" }}>
+            <Col style={{ backgroundColor: "#555", color: "#fff" }} className="py-2">
               <MarqueeComponent />
             </Col>
           </Row>
@@ -35,7 +34,7 @@ class TopComponent extends React.Component {
           </Jumbotron>
 
           <Row>
-            <Col className="text-left">
+            <Col className="text-left text-uppercase font-weight-bold">
               <Nav variant="tabs">
                 <Nav.Item>
                   <Nav.Link href="/">Beranda</Nav.Link>
@@ -47,7 +46,7 @@ class TopComponent extends React.Component {
                   <Nav.Link eventKey="news" href="news">Berita</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="regulasi" href="regulasi">Regulasi Terbaru</Nav.Link>
+                  <Nav.Link eventKey="regulasi" href="#">Regulasi Terbaru</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>

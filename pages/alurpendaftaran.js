@@ -39,7 +39,7 @@ function Alurpendaftaran() {
               <img src="../images/alurpendaftaran.jpg" className="img-fluid" width={600} />
             </div>
             <hr />
-            <Button variant="primary" size="lg" onClick={handleRegist}>{userdata ? 'Ubah Data' : 'Pendaftaran'} Kartu Pencari Kerja (AK/I)</Button>
+            <Button variant="primary" size="lg" onClick={handleRegist}>{userdata ? 'Ubah Data' : 'Daftar Sekarang'}</Button>
           </Col>
           <Col lg={3} sm={12}>
             <RelatedComponent />

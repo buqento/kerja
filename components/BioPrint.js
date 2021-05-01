@@ -167,7 +167,7 @@ export class BioPrint extends React.PureComponent {
                         <div className="my-5 text-center">
                             <div>Kepala Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu<br /> Kabupaten Maluku Barat Daya</div>
 
-                            <img src="https://www.dummies.com/wp-content/uploads/324172.image0.jpg" width={200} />
+                            <img src="../images/ttd.jpg" width={200} />
 
                             <div className="font-weight-bold">MACARIA LOUHENAPESSY, S.Sos</div>
                             <div>Pembina Tk. I</div>

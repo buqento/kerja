@@ -41,7 +41,7 @@ function Loker() {
           <Col lg={9} sm={12}>
             {
               data.map((item, index) =>
-                <div className="my-5" key={index}>
+                <div className="my-4" key={index}>
                   <h3 className="font-weight-bold text-capitalize">{item.title}</h3>
                   <div>
                     Tanggal posting: <strong>{item.dateCreated}</strong>

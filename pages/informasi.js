@@ -60,23 +60,29 @@ class Informasi extends React.Component {
 
         <Container>
 
-
           <Row className="mt-4">
-            <Col lg={3} sm={12} className="text-center">
+            <Col lg={9} sm={12} className="text-center">
               <SlideInfoComponent />
             </Col>
+            <Col lg={3} sm={12} className="text-center">
+              <RelatedComponent />
+            </Col>
+          </Row>
 
+          <Row className="mt-4">
             <Col lg={6} sm={12} className="text-center">
               <Row className="mb-3">
                 <Col>
                   <Image src="../images/news/card1.png" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'center', width: '350px', height: '200px' }} thumbnail />
-                  Kantor Dinas Penanaman Modal dan PTSP Kab.MBD 
+                  Kantor Dinas Penanaman Modal dan PTSP Kab.MBD
                 </Col>
                 <Col>
-                  <Image src="../images/news/card2.png" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'center', width: '350px', height: '200px' }} thumbnail />
+                  <Image src="../images/news/card2.jpg" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'center', width: '350px', height: '200px' }} thumbnail />
                   Dukungan Bupati Maluku Barat Daya kepada Si Pelita MBD
                 </Col>
               </Row>
+            </Col>
+            <Col lg={6} sm={12} className="text-center">
               <Row>
                 <Col>
                   <Image src="../images/news/card3.jpg" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'center', width: '350px', height: '200px' }} thumbnail />
@@ -86,15 +92,9 @@ class Informasi extends React.Component {
                   <Image src="../images/news/card4.png" className="img-fluid" style={{ objectFit: 'cover', objectPosition: 'center', width: '350px', height: '200px' }} thumbnail />
                   Sukseskan Pendataan Keluarga Tahun 2021
                 </Col>
-              </Row>
-            </Col>
-
-            <Col lg={3} sm={12} className="text-center">
-              <RelatedComponent />
-            </Col>
+              </Row>            </Col>
 
           </Row>
-
 
         </Container>
         <FooterComponent />
