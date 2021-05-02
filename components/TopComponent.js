@@ -46,6 +46,9 @@ class TopComponent extends React.Component {
                   <Nav.Link eventKey="news" href="news">Berita</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
+                  <Nav.Link eventKey="agenda" href="agenda">Agenda</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
                   <Nav.Link eventKey="regulasi" href="regulasi">Regulasi Terbaru</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>

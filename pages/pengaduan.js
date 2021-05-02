@@ -28,18 +28,19 @@ function Pengaduan() {
 
         <Row className="my-3 text-center">
           <Col lg={9} sm={12} className="mb-3">
-            <Image src="../images/pengaduan-online.png" className="mb-5 img-fluid" />
-            <div className="my-2">
-              <FaPhoneSquareAlt size={20} className="mb-1" /> Telepon: 082189592765
-</div>
-            <div className="my-2">
-              <FaWhatsapp size={24} className="mb-1" /> Whatsapp: <a href="https://wa.me/6281343418243"> 6281343418243</a>
-            </div>
-            <div className="my-2">
-              <HiOutlineMail size={24} className="mb-1" /> Email: nakertransmbd@yahoo.com
-</div>
-            <div className="my-2">
-              <FaFacebookSquare size={20} className="mb-1" /> Facebook: <a href="https://web.facebook.com/lowongankerja.mbd" target="blank">Lowongan Kerja MBD</a>
+            <Image src="../images/lapor.jpg" className="my-5 img-fluid w-50" />
+            <h3 className="my-3">Layanan Aspirasi dan Pengaduan Tenaga Kerja</h3>
+            <Image src="../images/pengaduan-online.jpg" className="mb-5 img-fluid w-50" />
+
+            <div className="h3">
+              <div className="mb-2"><FaPhoneSquareAlt size={32} className="mb-1" color="blue" /> 082189592765</div>
+              <div className="my-2">
+                <FaWhatsapp size={34} color="green" className="mb-1" /> <a href="https://wa.me/6281343418243"> 6281343418243</a>
+              </div>
+              <div className="my-2"><HiOutlineMail size={34} className="mb-1" color="red" /> <a href="mailto:nakertransmbd@yahoo.com">nakertransmbd</a></div>
+              <div className="my-2">
+                <FaFacebookSquare color="blue" size={32} className="mb-1" /> <a href="https://web.facebook.com/lowongankerja.mbd" target="blank">Lowongan Kerja MBD</a>
+              </div>
             </div>
           </Col>
 

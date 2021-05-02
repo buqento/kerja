@@ -6,7 +6,7 @@ function RelatedComponent() {
         <>
             <Card>
                 <Card.Header>Link terkait</Card.Header>
-                <Card.Body>
+                <Card.Body className="text-center">
                     <Button variant="primary" href="https://www.malukubaratdayakab.go.id/" target="blank">malukubaratdayakab.go.id</Button>
                 </Card.Body>
             </Card>

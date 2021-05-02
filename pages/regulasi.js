@@ -32,7 +32,7 @@ class Regulasi extends React.Component {
                 <li>Peraturan Pemerintah Nomor 37 Tahun 2021 tentang Perjanjian  Waktu Tertentu, Alih Daya, Waktu Kerja dan Waktu Istirahat dan Pemutusan Hubungan Kerja.</li>
                 <li>Peraturan Pemerintah Nomor 34 Tahun 2021 Tentang Penggunaan Tenaga Kerja Asing.</li>
               </ol>
-              <img src="../images/jdih.jpg" className="img-fluid" />
+              <Image src="../images/jdih.jpg" className="img-fluid mb-3" />
             </Col>
 
             <Col lg={3} sm={12}>
@@ -40,7 +40,7 @@ class Regulasi extends React.Component {
               <Card className="mt-3">
                 <Card.Body>
                   <Button variant="primary" href="https://jdih.kemnaker.go.id/" target="blank" block>jdih.kemnaker.go.id</Button>
-                  <img src="../images/ilustrasi.jpg" className="img-fluid mt-3" />
+                  <Image src="../images/ilustrasi.jpg" className="img-fluid w-100 mt-3" />
                 </Card.Body>
               </Card>
             </Col>
