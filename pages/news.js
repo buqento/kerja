@@ -39,37 +39,32 @@ class News extends React.Component {
         data: {
           title: 'Rapat Koordinasi Pembangunan Infrastruktur Transportasi Udara',
           description: 'Bupati Maluku Barat Daya, Benyamin Th. Noach, S.T, didampingi Sekretaris Daerah, Drs. A.Siamiloy, M.Si, Kepala Bappeda, Kepala Dinas PU dan Kepala Dinas Perhubungan menghadiri Rapat Koordinasi Pembangunan Infrastruktur Transportasi Udara dengan Deputi I Kepala Staf Kepresidenan Febry Calvin Tetelepta dan Direktur Bandara Kementerian Perhubungan, Nafthan Syaroni,  bertempat di Ruang Rapat Utama, Kantor Staf Kepresidenan, Jakarta Pusat, Senin (19/4/2021).',
-          image: 'berita4.jpg'
+          image: 'berita4.jpg',
+          dateModified: '15 April 2021'
         }
       },
       {
         data: {
           title: 'Bupati MBD Hadiri Rapat Umum Pemegang Saham PT BPD Maluku dan Maluku Utara Tahun 2021',
           description: 'Bupati Maluku Barat Daya, Benyamin Th. Noach S.T, menghadiri Rapat Umum Pemegang Saham Tahunan dan Luar Biasa PT. Bank Pembangunan Daerah Maluku dan Maluku Utara. Rapat ini dihadiri oleh Gubernur Maluku, Murad Ismail selaku Pemegang Saham Pengendali dan  juga dihadiri oleh seluruh Bupati /Walikota se Provinsi Maluku, Dewan Komisaris dan Direksi PT. BPD Maluku-Maluku Utara  yang dilaksanakan di Hotel Mandarin, Jakarta Pusat, Selasa (6/4/2021).',
-          image: 'berita3.jpg'
+          image: 'berita3.jpg',
+          dateModified: '17 April 2021'
         }
       },
       {
         data: {
           title: 'Cabut dari Blok Masela, Shell Negosiasi ke Pemegang Saham Baru',
           description: 'Jakarta. Shell Upstream Overseas Ltd akan hengkang dari proyek pengembangan Blok Masela. Perusahaan tersebut sedang melakukan divestasi participating interest (PI) atau hak kelolanya sebesar 35% di proyek yang berada di Kepulauan Tanimbar, Maluku tersebut. Menurut Deputi Bidang Koordinasi Kedaulatan Maritim dan Energi Kementerian Koordinator Bidang Kemaritiman dan Investasi (Kemenko Marves) Basilio D. Araujo, saat ini Shell sedang bidding atau tawar-menawar dengan pemegang saham baru.',
-          image: 'berita2.jpg'
+          image: 'berita2.jpg',
+          dateModified: '31 April 2021'
         }
       },
       {
         data: {
           title: 'MBD Dijatahi 40 Unit BTS',
           description: 'Ambon, BKA- Kabupaten Maluku Barat Daya (MBD) kembali mendapat jatah pembangunan Base Transceiver Station (BTS) Bakti oleh Kementrian Komunikasi dan Informatika Republik Indonesia. Pembangun BTS Bakti akan dilakukan secara bertahap dalam kurun waktu dua tahun, yakni tahun ini hingga 2022 mendatang. Dalam dua tahun tersebut, Kabupaten MBD mendapat jatah sebanyak 82 unit BTS Bakti dan akan dibangun sebanyak kurang lebih 40 unit di tahun ini. Ini disampaikan Kepala Dinas Kominfo Kabupaten MBD, W.A.A. Petrusz, kepada koran ini, Sabtu (17/4).',
-          image: 'berita1.jpg'
-        }
-      },
-      {
-        data: {
-          title: 'Seleksi pelatihan Balai Latihan Kerja Ambon 2021',
-          by: 'Balai Latihan Kerja Ambon',
-          description: 'Informasi menarik bagi anda yang ingin meningkatkan skil atau keterampilan dan anda berdomisili di sekitar Ambon. Jangan lewatkan kesempatan mengikuti Pelatihan Kerja Berbasis Kompetensi Tahap II tahun 2021  yang akan diadakan oleh Balai Latihan Kerja (BLK) Ambon. Kegiatan ini dibiayai penuh dari Pemerintah (dana APBN).',
-          image: 'berita5.png',
-          dateCreated: '16 April 2021'
+          image: 'berita1.jpg',
+          dateModified: '1 Mei 2021'
         }
       }
     ]
@@ -96,7 +91,7 @@ class News extends React.Component {
                 news && news.map((item, index) =>
                   <div className="mb-3" key={index}>
                     <h3 className="font-weight-bold text-capitalize">{item.data.title}</h3>
-                    <div className="mb-3 small">5 April 2021 | Oleh: Admin</div>
+                    <div className="mb-3 small">{item.data.dateModified} | Oleh: Admin</div>
                     <Image src={`../images/news/${item.data.image}`} className="img-fluid mb-3" width={600} thumbnail />
                     <div dangerouslySetInnerHTML={{ __html: item.data.description }} />
                     <hr />
